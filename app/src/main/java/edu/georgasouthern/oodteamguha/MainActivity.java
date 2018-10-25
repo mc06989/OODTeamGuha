@@ -7,13 +7,42 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
+
 public class MainActivity extends AppCompatActivity {
+    private Database_Helper database_helper = null;
+    private Database_Helper getHelper() {
+        if (database_helper == null) {
+            database_helper = OpenHelperManager.getHelper(this,Database_Helper.class);
+        }
+        return database_helper;
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if (database_helper != null) {
+            OpenHelperManager.releaseHelper();
+            database_helper = null;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.presentation);
 
+        //Dao<TableDefinitions.User, Integer> userDao = getHelper().getUserDao();
+        //TableDefinitions.User u = new TableDefinitions.User();
+        //u.setName("Tom");
+        //try {
+            //userDao.createIfNotExists(u);
+        //} catch (SQLException e) {
+        //    e.printStackTrace();
+        //}
         Button createButton = findViewById(R.id.button);
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
