@@ -58,7 +58,16 @@ public class MainActivity extends AppCompatActivity {
                 if (income>expenses){
                     budgetTextView.setText("Your budget will work indefinitely, make sure to account for other expenses!");
                 }else if (expenses>income){
-
+                    int months = 0;
+                    while(balance != 0){
+                        balance -= expenses;
+                        if(balance <= 0){
+                            break;
+                        }
+                        balance += income;
+                        months++;
+                    }
+                    budgetTextView.setText("Your budget will last "+months+" more months.");
                 }
 
                 //budgetTextView.setText( Double.toString((balance/(income-expenses))/12.0) );

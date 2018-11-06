@@ -16,7 +16,8 @@ public class Startup extends AppCompatActivity {
 
         OpenHelperManager.getHelper(this, Database_Helper.class);
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
