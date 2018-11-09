@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15sp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Initial_Input"
+    tools:showIn="@layout/activity_initial__input">
+
+    <!--HEAD-->
+
+    <TextView
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/alegreya_sc_bold"
+        android:gravity="end"
+        android:minWidth="25dp"
+        android:minHeight="25dp"
+        android:text="@string/setup"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="50sp" />
+
+
+    <LinearLayout
+        android:id="@+id/EsTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="@string/essentials"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="32sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="@string/food"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="60sp"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="50sp" />
+
+        <EditText
+            android:id="@+id/foodmonies"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="@string/travel"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="40sp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/travelmonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="320dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="@string/hjgh"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/othermonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Es"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="@string/non_essentials"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="32sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="@string/cable"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/cablemonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="630dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="@string/hgy"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/entertainmentmonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="700dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="other"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/othn"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="700dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="other"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/neothermonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Ess"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="800dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="Non-Monthly Essentials"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="32sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Efhegs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="860dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="(Add up for a year, round up if needed.)"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="960dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="light bill"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/lightbill"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1040dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="water bill"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/waterbill"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1120dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140sp"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="other"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content"
+            tools:paddingStart="20sp" />
+
+        <EditText
+            android:id="@+id/nmeothermonies"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

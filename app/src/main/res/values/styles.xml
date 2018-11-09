@@ -8,9 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Launcher" >
-            <item name="android:windowBackground"> @drawable/splashscreen_background</item>
-            <item name="colorPrimaryDark">@android:color/white</item>
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/splashscreen_background</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
