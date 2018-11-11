@@ -1,13 +1,21 @@
 package edu.georgasouthern.oodteamguha;
-public class Input_Object {
-    int cost;
-    String name;
-    boolean  monthly;
 
-    Input_Object(String name, int cost, boolean monthly){
-    this.cost = cost;
+import static edu.georgasouthern.oodteamguha.Algorithm.Costs;
+
+public class Input_Object {
+    double value;
+    String name;
+    boolean monthly;
+
+    //from Initial_Startup_1 & 2
+    Input_Object(String name, double cost, boolean monthly){
+    this.value = cost;
     this.monthly = monthly;
-    this.cost = cost;
+    this.name = name;
+    Costs.add(this);
     }
+
+    //alternately, can make child classes for monthly and non-monthly essentials
+
 
 }

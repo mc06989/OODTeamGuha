@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15sp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Initial_Input"
+    tools:paddingStart="15sp"
     tools:showIn="@layout/activity_initial__input">
 
     <!--HEAD-->
@@ -22,35 +22,36 @@
         android:text="@string/setup"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
-        android:id="@+id/EsTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="509dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48000002">
+    android:id="@+id/EsTitle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:layout_marginBottom="509dp"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.48000002">
 
-        <TextView
-            android:layout_width="363dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:gravity="start"
-            android:minWidth="10dp"
-            android:minHeight="25dp"
-            android:text="@string/essentials"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="32sp"
-            android:textStyle="italic" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_weight="1"
+        android:fontFamily="serif"
+        android:gravity="start"
+        android:minWidth="10dp"
+        android:minHeight="25dp"
+        android:text="@string/essentials"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="32sp"
+        android:textStyle="italic" />
+</LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -303,7 +304,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout6"
+        android:id="@+id/linearLayout22"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="700dp"

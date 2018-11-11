@@ -12,7 +12,11 @@ import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 
+import static edu.georgasouthern.oodteamguha.Algorithm.inflow;
+import static edu.georgasouthern.oodteamguha.Algorithm.spending;
+
 public class MainActivity extends AppCompatActivity {
+    public double balance;
     private Database_Helper database_helper = null;
     private Database_Helper getHelper() {
         if (database_helper == null) {
@@ -52,25 +56,25 @@ public class MainActivity extends AppCompatActivity {
                 EditText expensesEditText = findViewById(R.id.expensesEditText);
                 TextView budgetTextView = findViewById(R.id.budgetTextView);
                 if (incomeEditText.toString()=="" || expensesEditText.toString()==""||expensesEditText.toString()==""){}else{
-                double income = Double.parseDouble(incomeEditText.getText().toString());
-                double expenses = Double.parseDouble(expensesEditText.getText().toString());
-                double balance = Double.parseDouble(balanceEditText.getText().toString());
-                if (income>expenses){
+                    inflow = Double.parseDouble(incomeEditText.getText().toString());
+                    spending = Double.parseDouble(expensesEditText.getText().toString());
+                balance = Double.parseDouble(balanceEditText.getText().toString());
+                if (inflow>spending){
                     budgetTextView.setText("Your budget will work indefinitely, make sure to account for other expenses!");
-                }else if (expenses>income){
+                }else if (spending>inflow){
                     int months = 0;
                     while(balance != 0){
-                        balance -= expenses;
+                        balance -= spending;
                         if(balance <= 0){
                             break;
                         }
-                        balance += income;
+                        balance += inflow;
                         months++;
                     }
                     budgetTextView.setText("Your budget will last "+months+" more months.");
                 }
 
-                //budgetTextView.setText( Double.toString((balance/(income-expenses))/12.0) );
+                //budgetTextView.setText( Double.toString((balance/(inflow-spending))/12.0) );
 
                 }
             }

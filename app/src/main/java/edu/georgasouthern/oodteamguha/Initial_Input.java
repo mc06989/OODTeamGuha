@@ -8,13 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
+import static edu.georgasouthern.oodteamguha.Algorithm.Costs;
 
 public class Initial_Input extends AppCompatActivity {
 
     EditText a,b,c,d,e,f,g,h,i;
-    ArrayList<Input_Object> Costs;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +31,15 @@ public class Initial_Input extends AppCompatActivity {
         h = (EditText) findViewById(R.id.waterbill);
         i = (EditText) findViewById(R.id.nmeothermonies);
 
-        Costs.add(new Input_Object(a.getTransitionName() ,Integer.parseInt(a.getText().toString()), true));
-        Costs.add(new Input_Object(b.getTransitionName() ,Integer.parseInt(b.getText().toString()), true));
-        Costs.add(new Input_Object(c.getTransitionName() ,Integer.parseInt(c.getText().toString()), true));
-        Costs.add(new Input_Object(d.getTransitionName() ,Integer.parseInt(d.getText().toString()), true));
-        Costs.add(new Input_Object(e.getTransitionName() ,Integer.parseInt(e.getText().toString()), true));
-        Costs.add(new Input_Object(f.getTransitionName() ,Integer.parseInt(f.getText().toString()), true));
-        Costs.add(new Input_Object(g.getTransitionName() ,Integer.parseInt(g.getText().toString()), true));
-        Costs.add(new Input_Object(h.getTransitionName() ,Integer.parseInt(h.getText().toString()), true));
-        Costs.add(new Input_Object(i.getTransitionName() ,Integer.parseInt(i.getText().toString()), true));
+        new Input_Object("food" ,Integer.parseInt(a.getText().toString()), true);
+        new Input_Object("travel" ,Integer.parseInt(b.getText().toString()), true);
+        new Input_Object("ess_other" ,Integer.parseInt(c.getText().toString()), true);
+        new Input_Object("cable" ,Integer.parseInt(d.getText().toString()), true);
+        new Input_Object("entertainment" ,Integer.parseInt(e.getText().toString()), true);
+        new Input_Object("noness_other" ,Integer.parseInt(f.getText().toString()), true);
+        new Input_Object("light",Integer.parseInt(g.getText().toString()), false);
+        new Input_Object("water",Integer.parseInt(h.getText().toString()), false);
+        new Input_Object( "other",Integer.parseInt(i.getText().toString()), false);
 
 
 
