@@ -41,6 +41,8 @@ public class DatabaseTest extends AppCompatActivity {
             rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             Button addButton = findViewById(R.id.addExpenseButton);
 
+
+
             rv.addOnItemTouchListener(new RecyclerItemClickListener(
                     getApplicationContext(),
                     rv,

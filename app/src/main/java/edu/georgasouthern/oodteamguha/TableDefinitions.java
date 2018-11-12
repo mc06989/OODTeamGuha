@@ -2,7 +2,7 @@ package edu.georgasouthern.oodteamguha;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class TableDefinitions {
+public abstract class TableDefinitions {
 
 
     @DatabaseTable(tableName = "UserData")
@@ -25,7 +25,7 @@ public class TableDefinitions {
     }
 
     @DatabaseTable(tableName = "Expenses")
-    public static class Expense{
+    public static class Expense {
         @DatabaseField(generatedId = true)
         int id;
         @DatabaseField(canBeNull = false)
@@ -35,14 +35,14 @@ public class TableDefinitions {
         @DatabaseField(canBeNull = false)
         boolean monthly;
 
-        public Expense(){
+        public Expense() {
 
         }
 
-        public Expense(double value, String name, boolean monthly){
-            this.value=value;
-            this.name=name;
-            this.monthly=monthly;
+        public Expense(double value, String name, boolean monthly) {
+            this.value = value;
+            this.name = name;
+            this.monthly = monthly;
         }
     }
 }
