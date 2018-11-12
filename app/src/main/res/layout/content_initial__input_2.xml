@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15sp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Initial_Input_2"
+    tools:showIn="@layout/activity_initial__input_2">
+
+    <TextView
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/alegreya_sc_bold"
+        android:gravity="end"
+        android:minWidth="25dp"
+        android:minHeight="25dp"
+        android:text="@string/setup"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="50sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="509dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Fixed Savings"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="60sp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/fixedSavings"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Efhegs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="(Money you want to have saved at any point in time.)"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Expendable Savings"
+            android:textAlignment="viewEnd"
+            android:textSize="28sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="20dp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/expendableSavings"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Efhes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="(Money you could use in case of an emergency or possibly use for a vacation or fun : ))"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/TotalSav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:text="TOTAL SAVINGS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Efhes" />
+
+    <TextView
+        android:id="@+id/Savings"
+        android:layout_width="128dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="37dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/TotalSav"
+        app:layout_constraintTop_toBottomOf="@+id/Efhes" />
+
+</android.support.constraint.ConstraintLayout>

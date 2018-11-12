@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Balance</string>
+    <string name="title_activity_initial__input">Initial_Input</string>
+    <string name="setup">SETUP</string>
+    <string name="essentials">Essentials (monthly)</string>
+    <string name="food">groceries</string>
+    <string name="travel">transportation</string>
+    <string name="hjgh">other</string>
+    <string name="non_essentials">Non-Essentials (monthly)</string>
+    <string name="cable">cable</string>
+    <string name="hgy">entertainment</string>
+    <string name="title_activity_initial__input_2">Initial_Input_2</string>
 </resources>
