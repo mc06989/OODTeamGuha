@@ -26,6 +26,8 @@ public class TableDefinitions {
 
     @DatabaseTable(tableName = "Expenses")
     public static class Expense{
+        @DatabaseField(generatedId = true)
+        int id;
         @DatabaseField(canBeNull = false)
         double value;
         @DatabaseField(canBeNull = true)

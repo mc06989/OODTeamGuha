@@ -35,4 +35,8 @@ public class DataTestAdapter extends Adapter {
     public int getItemCount() {
         return listData.size();
     }
+
+    public Expense getItem(int position){
+        return listData.get(position);
+    }
 }
