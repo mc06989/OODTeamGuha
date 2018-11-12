@@ -8,9 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
-
-import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
     private Database_Helper database_helper = null;
