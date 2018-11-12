@@ -14,9 +14,7 @@ public class Startup extends AppCompatActivity {
         setContentView(R.layout.activity_startup);
         System.out.print("Simulating startup");
 
-        OpenHelperManager.getHelper(this, Database_Helper.class);
-
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DatabaseTest.class);
         startActivity(intent);
         finish();
     }

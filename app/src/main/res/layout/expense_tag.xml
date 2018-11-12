@@ -4,17 +4,19 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/DataTestName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/DataTestAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:ems="10"
-        android:inputType="number" />
+        android:text="TextView" />
+
+
+
 </LinearLayout>

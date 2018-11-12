@@ -23,4 +23,24 @@ public class TableDefinitions {
 
         }
     }
+
+    @DatabaseTable(tableName = "Expenses")
+    public static class Expense{
+        @DatabaseField(canBeNull = false)
+        double value;
+        @DatabaseField(canBeNull = true)
+        String name;
+        @DatabaseField(canBeNull = false)
+        boolean monthly;
+
+        public Expense(){
+
+        }
+
+        public Expense(double value, String name, boolean monthly){
+            this.value=value;
+            this.name=name;
+            this.monthly=monthly;
+        }
+    }
 }
