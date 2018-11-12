@@ -1,6 +1,8 @@
-package edu.georgasouthern.oodteamguha;
+package algorithms;
 
 import java.util.ArrayList;
+
+import edu.georgasouthern.oodteamguha.Input_Object;
 
 public class Algorithm {
 
@@ -12,8 +14,8 @@ public class Algorithm {
     public double cost(){
         double Avg_Non_Essential_Costs = 0;
         for(int i = 0 ; i < Costs.size(); i++){
-            if(!Costs.get(i).monthly){
-                Avg_Non_Essential_Costs = Avg_Non_Essential_Costs + Costs.get(i).value;
+            if(!Costs.get(i).isMonthly()){
+                Avg_Non_Essential_Costs = Avg_Non_Essential_Costs + Costs.get(i).getValue();
             }
         }
         return Avg_Non_Essential_Costs;

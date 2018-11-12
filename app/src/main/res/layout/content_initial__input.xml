@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Initial_Input"
+    tools:context="activities.Initial_Input"
     tools:paddingStart="15sp"
     tools:showIn="@layout/activity_initial__input">
 

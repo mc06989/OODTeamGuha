@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import static edu.georgasouthern.oodteamguha.Algorithm.fixed_savings;
-import static edu.georgasouthern.oodteamguha.Algorithm.expendable_savings;
-import static edu.georgasouthern.oodteamguha.Algorithm.total_savings;
+
+import edu.georgasouthern.oodteamguha.R;
+
+import static algorithms.Algorithm.expendable_savings;
+import static algorithms.Algorithm.fixed_savings;
+import static algorithms.Algorithm.total_savings;
 public class Initial_Input_2 extends AppCompatActivity {
 
 

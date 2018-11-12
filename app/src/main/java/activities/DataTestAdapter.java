@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import database.TableDefinitions.*;
+import database.TableDefinitions.Expense;
 import edu.georgasouthern.oodteamguha.R;
 
 public class DataTestAdapter extends Adapter {

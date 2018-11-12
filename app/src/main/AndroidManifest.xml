@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Startup"
+            android:name="activities.Startup"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="activities.MainActivity" />
         <activity
-            android:name=".Initial_Input"
+            android:name="activities.Initial_Input"
             android:label="@string/title_activity_initial__input"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -35,17 +35,17 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".Initial_Input_2"
+            android:name="activities.Initial_Input_2"
             android:label="@string/title_activity_initial__input_2"
-            android:parentActivityName=".Initial_Input"
+            android:parentActivityName="activities.Initial_Input"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.georgasouthern.oodteamguha.Initial_Input" />
+                android:value="edu.georgasouthern.oodteamguha.activities.Initial_Input" />
         </activity>
         <activity android:name="activities.DatabaseTest" />
         <activity
-            android:name=".NavPane"
+            android:name="activities.NavPane"
             android:label="@string/title_activity_nav_pane"
             android:theme="@style/AppTheme"></activity>
     </application>

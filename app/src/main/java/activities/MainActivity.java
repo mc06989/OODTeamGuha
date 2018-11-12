@@ -1,7 +1,7 @@
-package edu.georgasouthern.oodteamguha;
+package activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,9 +10,10 @@ import android.widget.TextView;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import database.Database_Helper;
+import edu.georgasouthern.oodteamguha.R;
 
-import static edu.georgasouthern.oodteamguha.Algorithm.inflow;
-import static edu.georgasouthern.oodteamguha.Algorithm.spending;
+import static algorithms.Algorithm.inflow;
+import static algorithms.Algorithm.spending;
 
 public class MainActivity extends AppCompatActivity {
     public double balance;

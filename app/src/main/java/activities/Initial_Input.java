@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,7 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
-import static edu.georgasouthern.oodteamguha.Algorithm.Costs;
+import edu.georgasouthern.oodteamguha.Input_Object;
+import edu.georgasouthern.oodteamguha.R;
 
 public class Initial_Input extends AppCompatActivity {
 

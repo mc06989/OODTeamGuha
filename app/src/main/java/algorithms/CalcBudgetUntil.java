@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package algorithms;
 
 public class CalcBudgetUntil extends Algorithm {
 }

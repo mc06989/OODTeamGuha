@@ -1,11 +1,11 @@
 package edu.georgasouthern.oodteamguha;
 
-import static edu.georgasouthern.oodteamguha.Algorithm.Costs;
+import static algorithms.Algorithm.Costs;
 
 public class Input_Object {
-    double value;
-    String name;
-    boolean monthly;
+    private double value;
+    private String name;
+    private boolean monthly;
 
     //from Initial_Startup_1 & 2
     Input_Object(String name, double cost, boolean monthly){
@@ -18,4 +18,27 @@ public class Input_Object {
     //alternately, can make child classes for monthly and non-monthly essentials
 
 
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isMonthly() {
+        return monthly;
+    }
+
+    public void setMonthly(boolean monthly) {
+        this.monthly = monthly;
+    }
 }
