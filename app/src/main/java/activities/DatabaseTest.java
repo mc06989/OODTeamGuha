@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import database.Database_Helper;
+import database.TableDefinitions;
+import edu.georgasouthern.oodteamguha.R;
+import edu.georgasouthern.oodteamguha.RecyclerItemClickListener;
 
 public class DatabaseTest extends AppCompatActivity {
 

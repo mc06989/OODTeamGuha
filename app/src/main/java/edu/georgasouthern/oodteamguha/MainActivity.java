@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import database.Database_Helper;
+
 import static edu.georgasouthern.oodteamguha.Algorithm.inflow;
 import static edu.georgasouthern.oodteamguha.Algorithm.spending;
 

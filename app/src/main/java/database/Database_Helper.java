@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package database;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -9,12 +9,15 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import database.TableDefinitions;
+
 public class Database_Helper extends OrmLiteSqliteOpenHelper {
 
     private static final String DB_NAME = "information.db";
     private static final int DB_VERSION = 1;
     private Dao<TableDefinitions.User, Integer> informationDao;
     private Dao<TableDefinitions.Expense, Integer> expenseDao;
+    private Dao<TableDefinitions.AccountType, Integer> accountTypeDao;
 
     public Database_Helper(Context context) {
         super(context,DB_NAME, null, DB_VERSION);
@@ -59,4 +62,13 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         }
         return expenseDao;
     }
+
+    public Dao<TableDefinitions.AccountType, Integer> getAccountTypeDao() throws SQLException,
+            java.sql.SQLException {
+        if (accountTypeDao == null) {
+            accountTypeDao = getDao(TableDefinitions.AccountType.class);
+        }
+        return accountTypeDao;
+    }
+
 }

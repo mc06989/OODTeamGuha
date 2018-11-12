@@ -1,4 +1,4 @@
-package edu.georgasouthern.oodteamguha;
+package activities;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import edu.georgasouthern.oodteamguha.TableDefinitions.*;
+import database.TableDefinitions.*;
+import edu.georgasouthern.oodteamguha.R;
 
 public class DataTestAdapter extends Adapter {
 

@@ -43,7 +43,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.georgasouthern.oodteamguha.Initial_Input" />
         </activity>
-        <activity android:name=".DatabaseTest" />
+        <activity android:name="activities.DatabaseTest" />
         <activity
             android:name=".NavPane"
             android:label="@string/title_activity_nav_pane"
