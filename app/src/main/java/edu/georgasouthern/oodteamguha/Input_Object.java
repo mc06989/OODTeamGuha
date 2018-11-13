@@ -8,7 +8,7 @@ public class Input_Object {
     private boolean monthly;
 
     //from Initial_Startup_1 & 2
-    Input_Object(String name, double cost, boolean monthly){
+    public Input_Object(String name, double cost, boolean monthly){
     this.value = cost;
     this.monthly = monthly;
     this.name = name;
