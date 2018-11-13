@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/initialAmountText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Initial Amount:"
+            android:textSize="40dip"/>
+
+        <EditText
+            android:id="@+id/initialAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textSize="30dip"/>
+
+        <TextView
+            android:id="@+id/startDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Year:"
+            android:textSize="40dip"/>
+
+        <EditText
+            android:id="@+id/startDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="30dip"/>
+
+        <TextView
+            android:id="@+id/endDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="End Year:"
+            android:textSize="40dip"/>
+
+        <EditText
+            android:id="@+id/endDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="30dip"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/getBtn"
+        android:layout_width="229dp"
+        android:layout_height="147dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:text="Get Data" />
+
+</RelativeLayout>
