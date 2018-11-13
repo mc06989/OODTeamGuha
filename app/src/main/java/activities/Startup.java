@@ -14,7 +14,7 @@ public class Startup extends AppCompatActivity {
         setContentView(R.layout.activity_startup);
         System.out.print("Simulating startup");
 
-        Intent intent = new Intent(getApplicationContext(), DatabaseTest.class);
+        Intent intent = new Intent(getApplicationContext(), NavPane.class);
         startActivity(intent);
         finish();
     }

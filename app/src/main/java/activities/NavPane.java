@@ -1,7 +1,9 @@
 package activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,9 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.georgasouthern.oodteamguha.R;
+import fragments.DataInputFragment;
+import fragments.SettingsFragment;
+
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class NavPane extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Fragment fragment = new DataInputFragment();
+        getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
     }
 
     @Override
@@ -69,9 +76,9 @@ public class NavPane extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        Fragment fragment = new DataInputFragment();
+        if (id == R.id.action_settings) {
+            fragment = new SettingsFragment();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -84,8 +91,15 @@ public class NavPane extends AppCompatActivity
 
         }
 
+        getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

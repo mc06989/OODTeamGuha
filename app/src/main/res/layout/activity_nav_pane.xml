@@ -8,10 +8,25 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/background">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
+    </FrameLayout>
+
+<!--
     <include
-        layout="@layout/app_bar_nav_pane"
+        android:id="@+id/background"
+        layout="@layout/fragment_data_input"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+-->
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -20,6 +35,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_nav_pane"
-        app:menu="@menu/activity_nav_pane_drawer" />
+        app:menu="@menu/nav_pane" />
 
 </android.support.v4.widget.DrawerLayout>

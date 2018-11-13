@@ -25,6 +25,8 @@ public abstract class TableDefinitions {
         }
     }
 
+
+
     @DatabaseTable(tableName = "Expenses")
     public static class Expense {
         @DatabaseField(generatedId = true)
