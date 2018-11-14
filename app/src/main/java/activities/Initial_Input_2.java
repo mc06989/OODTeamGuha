@@ -32,25 +32,17 @@ public class Initial_Input_2 extends AppCompatActivity {
                 EditText Fixed = findViewById(R.id.balanceEditText);
                 EditText Expendable = findViewById(R.id.incomeEditText);
                 TextView TotalTextView = findViewById(R.id.Savings);
-
-                if (Fixed.toString()=="" || Expendable.toString()==""){}else{
                     fixed_savings = Double.parseDouble(Fixed.getText().toString());
+                    System.out.println("fixed savings created");
                   // new Input_Object(Fixed.getTransitionName(),fixed_savings,false);
                     expendable_savings = Double.parseDouble(Expendable.getText().toString());
                    // new Input_Object(Expendable.getTransitionName(),expendable_savings,false);
                     total_savings = fixed_savings + expendable_savings;
+
                         TotalTextView.setText(Double.toString(total_savings));
                     }
-                    }});
+                    });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
 }

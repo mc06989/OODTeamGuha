@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,43 +22,42 @@
         android:text="@string/setup"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="50sp"
+        android:textSize="36sp"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
-    android:id="@+id/EsTitle"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
-    android:layout_marginBottom="509dp"
-    android:orientation="horizontal"
-    android:weightSum="2"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.48000002">
-
-    <TextView
-        android:layout_width="363dp"
+        android:id="@+id/EsTitle"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_weight="1"
-        android:fontFamily="serif"
-        android:gravity="start"
-        android:minWidth="10dp"
-        android:minHeight="25dp"
-        android:text="@string/essentials"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="32sp"
-        android:textStyle="italic" />
-</LinearLayout>
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="509dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:gravity="start"
+            android:minWidth="10dp"
+            android:minHeight="25dp"
+            android:text="@string/essentials"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="80dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +71,7 @@
             android:minHeight="25dp"
             android:text="@string/food"
             android:textAlignment="viewEnd"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_marginStart="60sp"
             tools:layout_width="wrap_content"
@@ -95,8 +94,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="110dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +108,7 @@
             android:minHeight="25dp"
             android:text="@string/travel"
             android:textAlignment="viewEnd"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_marginStart="40sp"
             tools:layout_width="wrap_content" />
@@ -131,7 +129,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="140dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -147,7 +145,7 @@
             android:minHeight="25dp"
             android:text="@string/hjgh"
             android:textAlignment="viewEnd"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -169,8 +167,8 @@
         android:id="@+id/Es"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="509dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="180dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -180,6 +178,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Es"
             android:layout_marginStart="5dp"
             android:fontFamily="serif"
             android:gravity="start"
@@ -187,7 +186,7 @@
             android:minHeight="25dp"
             android:text="@string/non_essentials"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:textStyle="italic" />
     </LinearLayout>
 
@@ -195,8 +194,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="200dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -211,7 +209,7 @@
             android:minHeight="25dp"
             android:text="@string/cable"
             android:textAlignment="viewEnd"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -233,7 +231,7 @@
         android:id="@+id/linearLayout5"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="230dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -248,7 +246,7 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="@string/hgy"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -267,48 +265,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="700dp"
-        android:layout_marginBottom="509dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="140sp"
-            android:fontFamily="serif"
-            android:gravity="end"
-            android:minHeight="25dp"
-            android:text="other"
-            android:textSize="30sp"
-            android:textStyle="italic"
-            tools:layout_width="wrap_content"
-            tools:paddingStart="20sp" />
-
-        <EditText
-            android:id="@+id/othn"
-            android:layout_width="75sp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10sp"
-            android:inputType="number"
-            android:minWidth="25dp"
-            android:minHeight="25dp"
-            android:textAlignment="textEnd"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            tools:elevation="3sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayout22"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="700dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="260dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -322,7 +282,7 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="other"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -344,8 +304,7 @@
         android:id="@+id/Ess"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="800dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="300dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -362,7 +321,7 @@
             android:minHeight="25dp"
             android:text="Non-Monthly Essentials"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:textStyle="italic" />
     </LinearLayout>
 
@@ -370,8 +329,7 @@
         android:id="@+id/Efhegs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="860dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="340dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -396,8 +354,7 @@
         android:id="@+id/linearLayout7"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="960dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="360dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -411,7 +368,7 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="light bill"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -433,7 +390,7 @@
         android:id="@+id/linearLayout8"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1040dp"
+        android:layout_marginTop="390dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -448,7 +405,7 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="water bill"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -470,7 +427,7 @@
         android:id="@+id/linearLayout9"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1120dp"
+        android:layout_marginTop="430dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -485,7 +442,7 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="other"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_width="wrap_content"
             tools:paddingStart="20sp" />
@@ -503,4 +460,14 @@
             tools:elevation="3sp" />
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/setcont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="508dp"
+        android:layout_marginEnd="170dp"
+        android:text="SET" />
+</RelativeLayout>
