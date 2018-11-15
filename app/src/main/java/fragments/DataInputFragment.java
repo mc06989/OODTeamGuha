@@ -40,7 +40,7 @@ import edu.georgasouthern.oodteamguha.R;
  * Use the {@link DataInputFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DataInputFragment extends Fragment {
+public class DataInputFragment extends Fragment implements AddExpenseDialogFragment.OnDialogCloseListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "count";
@@ -54,7 +54,6 @@ public class DataInputFragment extends Fragment {
     RecyclerView rv;
 
     private OnFragmentInteractionListener mListener;
-
     public DataInputFragment() {
         // Required empty public constructor
     }
@@ -151,8 +150,7 @@ public class DataInputFragment extends Fragment {
                     ft.addToBackStack(null);
 
                     aedf.show(ft,"expense_dialog");
-
-                    TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
+                    /*TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
                     expenses.add(e);
                     adapter.notifyItemInserted(expenses.size()-1);
 
@@ -160,7 +158,7 @@ public class DataInputFragment extends Fragment {
                         getHelper().getExpenseDao().create(e);
                     } catch (SQLException e1) {
                         e1.printStackTrace();
-                    }
+                    }*/
                 }
             });
 
@@ -201,6 +199,19 @@ public class DataInputFragment extends Fragment {
         out.putInt(ARG_PARAM1, count);
         getFragmentManager().putFragment(out,"DataInputFragment",this);
     }
+
+    @Override
+    public void OnDialogClose(TableDefinitions.Expense e) {
+        Log.d("PRINTOUTS", "Adding expense");
+        expenses.add(e);
+        try {
+            getHelper().getExpenseDao().create(e);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        adapter.notifyItemInserted(expenses.size()-1);
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -215,4 +226,5 @@ public class DataInputFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

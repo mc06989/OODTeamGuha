@@ -11,7 +11,7 @@
             android:text="Expense Name" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/expense_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -23,18 +23,18 @@
             android:layout_height="wrap_content"
             android:text="Amount" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
+    <EditText
+        android:id="@+id/expense_amount_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Monthly?" />
+    <CheckBox
+        android:id="@+id/expense_monthly_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monthly?" />
 
         <LinearLayout
             android:layout_width="match_parent"

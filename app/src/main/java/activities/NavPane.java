@@ -1,7 +1,9 @@
 package activities;
 
+import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +15,9 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
+import fragments.AddExpenseDialogFragment;
 import fragments.DataInputFragment;
 import fragments.SettingsFragment;
 
@@ -31,7 +35,7 @@ import android.widget.RelativeLayout;
 
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener{
 
     private DrawerLayout drawerLayout;
 
@@ -67,7 +71,7 @@ public class NavPane extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Fragment fragment = new DataInputFragment();
-        getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
+        getFragmentManager().beginTransaction().replace(R.id.background, fragment, "data_input").addToBackStack("").commit();
 
 
     }
@@ -125,6 +129,7 @@ public class NavPane extends AppCompatActivity
 
         }
 
+
         getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
 
         //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -135,5 +140,11 @@ public class NavPane extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void OnDialogClose(TableDefinitions.Expense e) {
+        DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag("data_input");
+        fm.OnDialogClose(e);
     }
 }
