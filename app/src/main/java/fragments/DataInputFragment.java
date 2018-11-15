@@ -95,13 +95,15 @@ public class DataInputFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
+        Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
+
         try {
             DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
             getHelper().getExpenseDao().delete(deletebuilder.prepare());
-            for (int i = 0;i<40;i++){
+            /*for (int i = 0;i<40;i++){
                 TableDefinitions.Expense e = new TableDefinitions.Expense(10, "Test", false);
                 getHelper().getExpenseDao().create(e);
-            }
+            }*/
 
             final List<TableDefinitions.Expense> expenses = getHelper().getExpenseDao().queryForAll();
 
