@@ -36,8 +36,9 @@ public class NavPane extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
-        //actionbar.setHomeAsUpIndicator(R.drawable.ic_action_menu_white);
+        //actionbar.setHomeAsUpIndicator(R.drawable.);
         actionbar.setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override

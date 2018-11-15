@@ -5,6 +5,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.stmt.DeleteBuilder;
+
 import org.w3c.dom.Text;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import activities.ExpenseListAdapter;
+import database.Database_Helper;
+import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 
 /**
@@ -73,10 +84,39 @@ public class DataInputFragment extends Fragment {
         return v;
     }
 
+    private Database_Helper database_helper = null;
+    private Database_Helper getHelper() {
+        if (database_helper == null) {
+            database_helper = OpenHelperManager.getHelper(this.getActivity().getApplicationContext(),Database_Helper.class);
+        }
+        return database_helper;
+    }
 
     public void onStart(){
         super.onStart();
 
+        try {
+            DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
+            getHelper().getExpenseDao().delete(deletebuilder.prepare());
+            for (int i = 0;i<40;i++){
+                TableDefinitions.Expense e = new TableDefinitions.Expense(10, "Test", false);
+                getHelper().getExpenseDao().create(e);
+            }
+
+            final List<TableDefinitions.Expense> expenses = getHelper().getExpenseDao().queryForAll();
+
+
+
+            final ExpenseListAdapter adapter = new ExpenseListAdapter(expenses);
+            final RecyclerView rv = getActivity().findViewById(R.id.recyclerView2);
+
+            rv.setAdapter(adapter);
+            rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /*public void onResume(){

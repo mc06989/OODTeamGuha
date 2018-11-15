@@ -14,9 +14,9 @@ public class DataTestViewHolder extends ViewHolder {
     }
 
     public void setData(TableDefinitions.Expense item){
-        android.widget.TextView name = itemView.findViewById(R.id.DataTestName);
+        android.widget.TextView name = itemView.findViewById(R.id.expense_tag_name);
         name.setText(item.getName());
-        android.widget.TextView amount = itemView.findViewById(R.id.DataTestAmount);
+        android.widget.TextView amount = itemView.findViewById(R.id.expense_tag_value);
         amount.setText(Double.toString(item.getValue()));
     }
 }
