@@ -76,36 +76,14 @@ public class DataInputFragment extends Fragment {
 
     public void onStart(){
         super.onStart();
-        System.out.println("I'm in onStart");
-        Button b = getActivity().findViewById(R.id.dataInputButton);
-        TextView tv = getActivity().findViewById(R.id.textView6);
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                count+=1;
-                ((TextView)getActivity().findViewById(R.id.textView6)).setText(Integer.toString(count));
-            }
-        });
-        tv.setText(Integer.toString(count));
     }
 
     /*public void onResume(){
         super.onResume();
-        System.out.println("I'm in onResume");
-        Button b = getActivity().findViewById(R.id.dataInputButton);
-        TextView tv = getActivity().findViewById(R.id.textView6);
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                count+=1;
-                ((TextView)getActivity().findViewById(R.id.textView6)).setText(Integer.toString(count));
-            }
-        });
-        tv.setText(Integer.toString(count));
-    }
-*/
+    }*/
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

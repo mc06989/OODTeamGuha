@@ -16,9 +16,29 @@ import edu.georgasouthern.oodteamguha.R;
 import fragments.DataInputFragment;
 import fragments.SettingsFragment;
 
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.RelativeLayout;
+
 
 public class NavPane extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener{
+
+    private void configureToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        //actionbar.setHomeAsUpIndicator(R.drawable.ic_action_menu_white);
+        actionbar.setDisplayHomeAsUpEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +57,8 @@ public class NavPane extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         Fragment fragment = new DataInputFragment();
         getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
+
+        configureToolbar();
     }
 
     @Override
