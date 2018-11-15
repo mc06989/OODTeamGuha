@@ -10,10 +10,11 @@
 
     </style>
 
-    <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
+    <style name="PrimaryFlatButton" parent="Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="colorAccent">@color/colorPrimary</item>
+
     </style>
 
     <style name="AppTheme.Launcher">

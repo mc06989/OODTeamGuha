@@ -3,4 +3,5 @@
     <color name="colorPrimary">#dadada</color>
     <color name="colorPrimaryDark">#3b98fa</color>
     <color name="colorAccent">#3b98fa</color>
+    <color name="colorNegative">#fa453b</color>
 </resources>

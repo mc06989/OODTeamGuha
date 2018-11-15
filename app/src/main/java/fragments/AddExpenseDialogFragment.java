@@ -58,8 +58,15 @@ public class AddExpenseDialogFragment extends DialogFragment {
                 EditText name = v.findViewById(R.id.expense_name_edit);
                 EditText amount = v.findViewById(R.id.expense_amount_edit);
                 CheckBox monthly = v.findViewById(R.id.expense_monthly_edit);
-                TableDefinitions.Expense e = new TableDefinitions.Expense(Integer.valueOf(amount.getText().toString()),name.getText().toString(),monthly.isChecked() );
-                listener.OnDialogClose(e);
+                try {
+                    TableDefinitions.Expense e = new TableDefinitions.Expense(Integer.valueOf(amount.getText().toString()), name.getText().toString(), monthly.isChecked());
+                    listener.OnDialogClose(e);
+                }
+                catch(NumberFormatException ne){
+
+                }
+
+
                 dismiss();
             }
         });
