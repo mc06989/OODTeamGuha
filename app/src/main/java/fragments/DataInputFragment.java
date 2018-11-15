@@ -5,8 +5,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import org.w3c.dom.Text;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.function.Predicate;
 
 import activities.ExpenseListAdapter;
 import database.Database_Helper;
@@ -42,6 +45,11 @@ public class DataInputFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private int count;
+
+    List<TableDefinitions.Expense> expenses;// = getHelper().getExpenseDao().queryForAll();
+
+    ExpenseListAdapter adapter;
+    RecyclerView rv;
 
     private OnFragmentInteractionListener mListener;
 
@@ -92,39 +100,61 @@ public class DataInputFragment extends Fragment {
         return database_helper;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        try {
+            expenses = getHelper().getExpenseDao().queryForAll();
+            adapter= new ExpenseListAdapter(expenses);
+            rv = getActivity().findViewById(R.id.recyclerView2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void onStart(){
         super.onStart();
 
         Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
 
-        try {
-            DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
-            getHelper().getExpenseDao().delete(deletebuilder.prepare());
+            //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
+            //getHelper().getExpenseDao().delete(deletebuilder.prepare());
             /*for (int i = 0;i<40;i++){
                 TableDefinitions.Expense e = new TableDefinitions.Expense(10, "Test", false);
                 getHelper().getExpenseDao().create(e);
             }*/
 
-            final List<TableDefinitions.Expense> expenses = getHelper().getExpenseDao().queryForAll();
 
 
 
-            final ExpenseListAdapter adapter = new ExpenseListAdapter(expenses);
-            final RecyclerView rv = getActivity().findViewById(R.id.recyclerView2);
+
+
 
             rv.setAdapter(adapter);
             rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
+            add_expense_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
+                    expenses.add(e);
+                    adapter.notifyItemInserted(expenses.size()-1);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                    try {
+                        getHelper().getExpenseDao().create(e);
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+
     }
 
-    /*public void onResume(){
+    public void onResume(){
         super.onResume();
 
-    }*/
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

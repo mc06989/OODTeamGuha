@@ -16,7 +16,6 @@ public class ExpenseListAdapter extends Adapter{
     List<TableDefinitions.Expense> listData;
     public ExpenseListAdapter(List<TableDefinitions.Expense> data){
         this.listData = data;
-
     }
 
 
