@@ -1,6 +1,8 @@
 package fragments;
 
+import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -116,7 +118,7 @@ public class DataInputFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
-        Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
+        final Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
 
             //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
             //getHelper().getExpenseDao().delete(deletebuilder.prepare());
@@ -137,6 +139,19 @@ public class DataInputFragment extends Fragment {
             add_expense_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    DialogFragment aedf = AddExpenseDialogFragment.newInstance("Add an expense");
+                    Fragment previous = getFragmentManager().findFragmentByTag("expense_dialog");
+
+                    if (previous !=null){
+                        ft.remove(previous);
+                    }
+                    ft.addToBackStack(null);
+
+                    aedf.show(ft,"expense_dialog");
+
                     TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
                     expenses.add(e);
                     adapter.notifyItemInserted(expenses.size()-1);
