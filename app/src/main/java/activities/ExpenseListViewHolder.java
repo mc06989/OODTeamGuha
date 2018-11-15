@@ -1,15 +1,13 @@
 package activities;
 
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 
-public class DataTestViewHolder extends ViewHolder {
-
-
-    public DataTestViewHolder(View itemView) {
+public class ExpenseListViewHolder extends RecyclerView.ViewHolder {
+    public ExpenseListViewHolder(View itemView) {
         super(itemView);
     }
 
@@ -20,4 +18,3 @@ public class DataTestViewHolder extends ViewHolder {
         amount.setText(Double.toString(item.getValue()));
     }
 }
-

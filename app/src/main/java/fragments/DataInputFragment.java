@@ -1,10 +1,16 @@
 package fragments;
 
+import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +18,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.stmt.DeleteBuilder;
+
 import org.w3c.dom.Text;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.function.Predicate;
+
+import activities.ExpenseListAdapter;
+import database.Database_Helper;
+import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 
 /**
@@ -31,6 +47,11 @@ public class DataInputFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private int count;
+
+    List<TableDefinitions.Expense> expenses;// = getHelper().getExpenseDao().queryForAll();
+
+    ExpenseListAdapter adapter;
+    RecyclerView rv;
 
     private OnFragmentInteractionListener mListener;
 
@@ -73,39 +94,83 @@ public class DataInputFragment extends Fragment {
         return v;
     }
 
+    private Database_Helper database_helper = null;
+    private Database_Helper getHelper() {
+        if (database_helper == null) {
+            database_helper = OpenHelperManager.getHelper(this.getActivity().getApplicationContext(),Database_Helper.class);
+        }
+        return database_helper;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        try {
+            expenses = getHelper().getExpenseDao().queryForAll();
+            adapter= new ExpenseListAdapter(expenses);
+            rv = getActivity().findViewById(R.id.recyclerView2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void onStart(){
         super.onStart();
-        System.out.println("I'm in onStart");
-        Button b = getActivity().findViewById(R.id.dataInputButton);
-        TextView tv = getActivity().findViewById(R.id.textView6);
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                count+=1;
-                ((TextView)getActivity().findViewById(R.id.textView6)).setText(Integer.toString(count));
-            }
-        });
-        tv.setText(Integer.toString(count));
+        final Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
+
+            //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
+            //getHelper().getExpenseDao().delete(deletebuilder.prepare());
+            /*for (int i = 0;i<40;i++){
+                TableDefinitions.Expense e = new TableDefinitions.Expense(10, "Test", false);
+                getHelper().getExpenseDao().create(e);
+            }*/
+
+
+
+
+
+
+
+            rv.setAdapter(adapter);
+            rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+            add_expense_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    DialogFragment aedf = AddExpenseDialogFragment.newInstance("Add an expense");
+                    Fragment previous = getFragmentManager().findFragmentByTag("expense_dialog");
+
+                    if (previous !=null){
+                        ft.remove(previous);
+                    }
+                    ft.addToBackStack(null);
+
+                    aedf.show(ft,"expense_dialog");
+
+                    TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
+                    expenses.add(e);
+                    adapter.notifyItemInserted(expenses.size()-1);
+
+                    try {
+                        getHelper().getExpenseDao().create(e);
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+
     }
 
-    /*public void onResume(){
+    public void onResume(){
         super.onResume();
-        System.out.println("I'm in onResume");
-        Button b = getActivity().findViewById(R.id.dataInputButton);
-        TextView tv = getActivity().findViewById(R.id.textView6);
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                count+=1;
-                ((TextView)getActivity().findViewById(R.id.textView6)).setText(Integer.toString(count));
-            }
-        });
-        tv.setText(Integer.toString(count));
     }
-*/
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

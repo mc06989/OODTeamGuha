@@ -1,6 +1,9 @@
 package database;
+import android.icu.util.DateInterval;
+
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.types.DateTimeType;
 import com.j256.ormlite.table.DatabaseTable;
 
 public abstract class TableDefinitions {
@@ -37,6 +40,7 @@ public abstract class TableDefinitions {
         private String name;
         @DatabaseField(canBeNull = false)
         private boolean monthly;
+
 
         public Expense() {
 
