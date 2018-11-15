@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,24 +12,179 @@
     <TextView
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:fontFamily="@font/alegreya_sc_bold"
         android:gravity="end"
         android:minWidth="25dp"
         android:minHeight="25dp"
-        android:text="@string/setup"
+        android:text="SETUP (monthly)"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="50sp"
+        android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLa11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Pension Income(after tax):"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="20dp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/pensionmoney"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lout10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Saving from Income:"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="60sp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/savingsFromIncome"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/louy10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/expendableIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Expendable Income:"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="60sp"
+            tools:layout_width="wrap_content" />
+
+        <TextView
+            android:id="@+id/expendableIncomeset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Money"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_width="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="85dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Additional income:"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="60sp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/extramonies"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="160dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -45,7 +200,7 @@
             android:minHeight="25dp"
             android:text="Fixed Savings"
             android:textAlignment="viewEnd"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="italic"
             tools:layout_marginStart="60sp"
             tools:layout_width="wrap_content" />
@@ -68,8 +223,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="200dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,12 +246,49 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayou4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="250dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="end"
+            android:minHeight="25dp"
+            android:text="Interest on Fixed Savings:"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_marginStart="20dp"
+            tools:layout_width="wrap_content" />
+
+        <EditText
+            android:id="@+id/interest"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10sp"
+            android:inputType="number"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:elevation="3sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout11"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginBottom="509dp"
+        android:layout_marginTop="300dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -135,7 +326,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="350dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -163,8 +354,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
-        android:text="TOTAL SAVINGS"
+        android:layout_marginTop="500dp"
+        android:text="SAVE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Efhes" />
 
@@ -178,4 +369,4 @@
         app:layout_constraintStart_toEndOf="@+id/TotalSav"
         app:layout_constraintTop_toBottomOf="@+id/Efhes" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
