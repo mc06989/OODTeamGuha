@@ -195,4 +195,31 @@ public abstract class TableDefinitions {
             this.interestRate = interestRate;
         }
     }
+
+    @DatabaseTable(tableName = "Incomes")
+    public static class Income{
+        @DatabaseField(id=true,generatedId = true)
+        private int id;
+        @DatabaseField(canBeNull = true)
+        private int amount;
+        @DatabaseField(canBeNull = true)
+        private String name;
+
+        public Income(){
+
+        }
+
+        public Income(String name, int amount){
+            this.name=name;
+            this.amount=amount;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+
+        public void setAmount(int amount) {
+            this.amount = amount;
+        }
+    }
 }

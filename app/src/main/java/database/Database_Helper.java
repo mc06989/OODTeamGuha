@@ -16,6 +16,7 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
     private Dao<TableDefinitions.User, Integer> informationDao;
     private Dao<TableDefinitions.Expense, Integer> expenseDao;
     private Dao<TableDefinitions.AccountType, Integer> accountTypeDao;
+    private Dao<TableDefinitions.Income, Integer> incomeDao;
 
     public Database_Helper(Context context) {
         super(context,DB_NAME, null, DB_VERSION);
@@ -67,6 +68,14 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
             accountTypeDao = getDao(TableDefinitions.AccountType.class);
         }
         return accountTypeDao;
+    }
+
+    public Dao<TableDefinitions.Income, Integer> getIncomeDao() throws SQLException,
+            java.sql.SQLException {
+        if (incomeDao == null) {
+            incomeDao = getDao(TableDefinitions.Income.class);
+        }
+        return incomeDao;
     }
 
 }

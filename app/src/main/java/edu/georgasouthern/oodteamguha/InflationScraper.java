@@ -82,7 +82,7 @@ public class InflationScraper implements Scraper {
 
 
     public void getAdjustedBalanceGraph(GraphView graphview, double initialAmt, int endDate){
-        int timeInterval = endDate - (entries.size()-1);
+        int timeInterval = endDate - entries.get(entries.size()-1).getYear();
 
         System.out.println("End Date "+endDate);
         System.out.println("StartDate" + entries.get(entries.size()-1).getYear());
@@ -93,7 +93,8 @@ public class InflationScraper implements Scraper {
     //    scrapeData();
 
         //repaste here if it doesn't work
-
+//        System.out.println(entries.size());
+//        System.out.println(entries.size()-1-timeInterval);
         //Get average inflation over specified time interval
         double endValue = entries.get(entries.size()-1).getValue();
         double startValue = entries.get(entries.size()-1-timeInterval).getValue();
