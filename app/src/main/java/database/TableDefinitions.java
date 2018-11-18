@@ -41,7 +41,6 @@ public abstract class TableDefinitions {
         @DatabaseField(canBeNull = false)
         private boolean monthly;
 
-
         public Expense() {
 
         }
@@ -196,9 +195,9 @@ public abstract class TableDefinitions {
         }
     }
 
-    @DatabaseTable(tableName = "Incomes")
+    @DatabaseTable(tableName = "Income")
     public static class Income{
-        @DatabaseField(id=true,generatedId = true)
+        @DatabaseField(generatedId = true)
         private int id;
         @DatabaseField(canBeNull = true)
         private int amount;
@@ -213,6 +212,8 @@ public abstract class TableDefinitions {
             this.name=name;
             this.amount=amount;
         }
+
+        public String getName(){return name;}
 
         public int getAmount() {
             return amount;

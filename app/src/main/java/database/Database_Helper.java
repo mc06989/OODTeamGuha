@@ -27,6 +27,7 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, TableDefinitions.User.class);
             TableUtils.createTable(connectionSource, TableDefinitions.Expense.class);
+            TableUtils.createTableIfNotExists(connectionSource, TableDefinitions.Income.class);
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
