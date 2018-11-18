@@ -2,13 +2,9 @@ package algorithms;
 
 import android.content.Intent;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import activities.Initial_Input;
-import activities.Initial_Input_2;
-import edu.georgasouthern.oodteamguha.CalculateInflation;
 import edu.georgasouthern.oodteamguha.DataEntry;
-import edu.georgasouthern.oodteamguha.InflationResults;
 import edu.georgasouthern.oodteamguha.InflationScraper;
 
 public class CalcBudgetUntil extends Algorithm {
@@ -35,23 +31,25 @@ public class CalcBudgetUntil extends Algorithm {
     }
 
     //assuming that expendable income remains the same
-    public void LastUntil(int currentyear){
+    public static void LastUntil(int currentyear){
+       ArrayList<String> lasting  = new ArrayList<String>();
         int year = currentyear;
         double monthlyBal = monthlyBalance(true);
         //considering essential-yearly costs too
         if (monthlyBal < 0) System.out.println("Your budget will not last you this month!");
         else {
+            lasting.add("Your budget will last in" + year);
             System.out.println("Your budget will last in " + year);
 
-            boolean willlast = true;
-
-            for(int r = year + 1; r < year + 2000; r++){
+            for(int r = year + 1; r < year + 80; r++){
             double costs =  totalMonthlyCosts(true)*(rateFromYear(r)/100 + 1);
             double income = getExpendable_income()*(1 - rateFromYear(r));
             //Base case when budget does not last
-            if((income - costs) < 0 ){ willlast = false; break; }
-            else { System.out.println("Your budget has a balance of " + (income - costs) + " for the year " + year );
-            if(year > currentyear + 2000) willlast = false; }
+            if((income - costs) < 0 ){ break; }
+            else {
+                lasting.add("Your budget has a balance of " + (income - costs) + " for the year " + year);
+                System.out.println("Your budget has a balance of " + (income - costs) + " for the year " + year );
+            }
             }
                 }
                     }

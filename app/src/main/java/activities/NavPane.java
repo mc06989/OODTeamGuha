@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
+import edu.georgasouthern.oodteamguha.ui.budgetuntil.BudgetUntilFragment;
 import fragments.AddExpenseDialogFragment;
 import fragments.DataInputFragment;
 import fragments.SettingsFragment;
@@ -35,7 +36,11 @@ import android.widget.RelativeLayout;
 
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener{
+        implements NavigationView.OnNavigationItemSelectedListener ,
+        DataInputFragment.OnFragmentInteractionListener,
+        SettingsFragment.OnFragmentInteractionListener,
+        AddExpenseDialogFragment.OnDialogCloseListener ,
+        BudgetUntilFragment.OnFragmentInteractionListener{
 
     private DrawerLayout drawerLayout;
 
@@ -127,6 +132,8 @@ public class NavPane extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.budgetuntil){
+            fragment = new BudgetUntilFragment();
         }
 
 

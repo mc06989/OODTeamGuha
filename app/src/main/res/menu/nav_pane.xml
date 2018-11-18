@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/budgetuntil"
+        android:layout_width="match_parent"
         android:orderInCategory="100"
+        android:title="BudgetUntil" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="101"
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item android:title="TestActivities" />

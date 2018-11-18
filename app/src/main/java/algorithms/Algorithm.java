@@ -99,7 +99,7 @@ public class Algorithm {
     }
 
     //total monthly cost
-    public double totalMonthlyCosts(boolean considerAnnual){
+    public static double totalMonthlyCosts(boolean considerAnnual){
         double totalMonthly = 0 ;
         double totalAnnual = 0 ;
         for(int i = 0; i < Costs.size(); i++){
@@ -111,7 +111,7 @@ public class Algorithm {
         else
             return totalMonthly; }
 
-    public double monthlyBalance (boolean considerannual){
+    public static double monthlyBalance (boolean considerannual){
       double costs = totalMonthlyCosts(considerannual);
       double income = getExpendable_income();
       double balance;

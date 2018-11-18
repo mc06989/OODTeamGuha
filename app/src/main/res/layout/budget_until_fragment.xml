@@ -35,19 +35,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="297dp"
-        android:text="SHMONEY"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="342dp"
+        android:text="                            "
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/calcUntil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="346dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="264dp"
         android:text="CALCULATE" />
 
 </RelativeLayout>
