@@ -6,6 +6,8 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
-    <item android:title="TestActivities" />
+    <item
+        android:id="@+id/test_activities"
+        android:title="TestActivities" />
     <item android:title="Data Input" />
 </menu>

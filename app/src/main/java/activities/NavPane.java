@@ -19,6 +19,7 @@ import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 import fragments.AddExpenseDialogFragment;
 import fragments.DataInputFragment;
+import fragments.InflationGraphFragment;
 import fragments.SettingsFragment;
 
 import android.support.design.widget.NavigationView;
@@ -117,16 +118,8 @@ public class NavPane extends AppCompatActivity
         Fragment fragment = new DataInputFragment();
         if (id == R.id.action_settings) {
             fragment = new SettingsFragment();
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if(id == R.id.test_activities){
+            fragment = new InflationGraphFragment();
         }
 
 
