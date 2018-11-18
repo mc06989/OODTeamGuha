@@ -33,8 +33,6 @@ public class Initial_Input_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial__input_2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         Button createButton = findViewById(R.id.TotalSav);
         createButton.setOnClickListener(new View.OnClickListener(){

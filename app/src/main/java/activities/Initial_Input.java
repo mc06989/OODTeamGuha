@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import edu.georgasouthern.oodteamguha.CalculateInflation;
+import edu.georgasouthern.oodteamguha.InflationResults;
 import edu.georgasouthern.oodteamguha.Input_Object;
 import edu.georgasouthern.oodteamguha.R;
 
@@ -19,22 +22,20 @@ public class Initial_Input extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial__input);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         Button hey = findViewById(R.id.setcont);
         hey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a = (EditText) findViewById(R.id.foodmonies);
-                b = (EditText) findViewById(R.id.travelmonies);
-                c = (EditText) findViewById(R.id.othermonies);
-                d = (EditText) findViewById(R.id.cablemonies);
-                e = (EditText) findViewById(R.id.entertainmentmonies);
-                f = (EditText) findViewById(R.id.neothermonies);
-                g = (EditText) findViewById(R.id.lightbill);
-                h = (EditText) findViewById(R.id.waterbill);
-                i = (EditText) findViewById(R.id.nmeothermonies);
+                a = findViewById(R.id.foodmonies);
+                b = findViewById(R.id.travelmonies);
+                c = findViewById(R.id.othermonies);
+                d = findViewById(R.id.cablemonies);
+                e = findViewById(R.id.entertainmentmonies);
+                f = findViewById(R.id.neothermonies);
+                g = findViewById(R.id.lightbill);
+                h = findViewById(R.id.waterbill);
+                i = findViewById(R.id.nmeothermonies);
 
                 new Input_Object("food" ,Integer.parseInt(a.getText().toString()), true);
                 new Input_Object("travel" ,Integer.parseInt(b.getText().toString()), true);
@@ -45,6 +46,10 @@ public class Initial_Input extends AppCompatActivity {
                 new Input_Object("light",Integer.parseInt(g.getText().toString()), false);
                 new Input_Object("water",Integer.parseInt(h.getText().toString()), false);
                 new Input_Object( "other",Integer.parseInt(i.getText().toString()), false);
+
+                //go to second setup page
+                Intent intent = new Intent(Initial_Input.this, Initial_Input_2.class);
+                startActivity(intent);
 
 
             }

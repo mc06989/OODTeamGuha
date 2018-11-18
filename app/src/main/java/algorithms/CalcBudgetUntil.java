@@ -1,7 +1,12 @@
 package algorithms;
 
+import android.content.Intent;
+
 import java.util.List;
 
+import activities.Initial_Input;
+import activities.Initial_Input_2;
+import edu.georgasouthern.oodteamguha.CalculateInflation;
 import edu.georgasouthern.oodteamguha.DataEntry;
 import edu.georgasouthern.oodteamguha.InflationResults;
 import edu.georgasouthern.oodteamguha.InflationScraper;
