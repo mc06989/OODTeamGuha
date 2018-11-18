@@ -19,12 +19,6 @@ public class Algorithm {
     //need to be removed and replaced from mainactivity
     static public double inflow, spending;
 
-    /*public double rateFromYear(int year){
-        List<DataEntry> ent = InflationScraper.getEntries();
-    }
-        for(int i = 0; i < InflationScraper.entries.size(); i++){
-        InflationScraper.entries.
-    }*/
     //INCOME
     public static void setPension_income(double pension_income) {
         Algorithm.pension_income = pension_income;
@@ -92,6 +86,7 @@ public class Algorithm {
         return total_savings;
     }
 
+    //not very useful might delete
     //method to calculate the average of non-monthly essentials for every month
     public double cost(){
         double Avg_Non_Essential_Costs = 0;
@@ -103,4 +98,34 @@ public class Algorithm {
         return Avg_Non_Essential_Costs;
     }
 
-}
+    //total monthly cost
+    public double totalMonthlyCosts(boolean considerAnnual){
+        double totalMonthly = 0 ;
+        double totalAnnual = 0 ;
+        for(int i = 0; i < Costs.size(); i++){
+            if(Costs.get(i).isMonthly()== true){ totalMonthly = totalMonthly + Costs.get(i).getValue(); }
+            else
+                totalAnnual = totalAnnual + Costs.get(i).getValue(); }
+
+        if (considerAnnual == true){ return(totalAnnual/12) + totalMonthly;}
+        else
+            return totalMonthly; }
+
+    public double monthlyBalance (boolean considerannual){
+      double costs = totalMonthlyCosts(considerannual);
+      double income = getExpendable_income();
+      double balance;
+      balance = income - costs;
+        if(balance < 0) { System.out.println("You are " + balance + " rupees out of budget!");}
+      if (balance == 0){ System.out.println("Your budget is exactly 0. Make sure to account for all your expenses! ");}
+      if (balance > 0){ System.out.println("Your current monthly balance, with " + costs +
+              " rupees being spent and " + income + " rupees being spent is " + balance); }
+
+        return balance;
+    }
+
+
+
+    }
+
+

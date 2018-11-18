@@ -25,7 +25,7 @@ public class InflationScraper implements Scraper {
 
     private String parseRow;
     private String parseColumn;
-    private List<DataEntry> entries;
+    private static List<DataEntry> entries;
     private GraphView graphview;
 
     public InflationScraper(GraphView graphview, TextView result, StringBuilder builder, String website, String cssClassIdentifier, String parseRow, String parseColumn){
@@ -167,6 +167,8 @@ public class InflationScraper implements Scraper {
     public List getEntries() {
         return this.entries;
     }
+
+    public static List getEntriesStatic(){return entries; }
 
     @Override
     public StringBuilder getBuilder() {
