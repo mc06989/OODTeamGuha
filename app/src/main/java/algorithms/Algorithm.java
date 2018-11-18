@@ -19,6 +19,7 @@ public class Algorithm {
     //need to be removed and replaced from mainactivity
     static public double inflow, spending;
 
+
     //INCOME
     public static void setPension_income(double pension_income) {
         Algorithm.pension_income = pension_income;

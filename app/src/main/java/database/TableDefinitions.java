@@ -36,7 +36,7 @@ public abstract class TableDefinitions {
         private int id;
         @DatabaseField(canBeNull = false)
         private double value;
-        @DatabaseField(canBeNull = true)
+        @DatabaseField(canBeNull = false)
         private String name;
         @DatabaseField(canBeNull = false)
         private boolean monthly;
@@ -200,13 +200,12 @@ public abstract class TableDefinitions {
     public static class Income{
         @DatabaseField(id=true,generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = true)
+        @DatabaseField(canBeNull = false)
         private int amount;
-        @DatabaseField(canBeNull = true)
+        @DatabaseField(canBeNull = false)
         private String name;
 
         public Income(){
-
         }
 
         public Income(String name, int amount){
