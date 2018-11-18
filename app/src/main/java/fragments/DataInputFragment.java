@@ -15,19 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.stmt.DeleteBuilder;
-
-import org.w3c.dom.Text;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.function.Predicate;
 
 import activities.ExpenseListAdapter;
+import activities.IncomeListAdapter;
 import database.Database_Helper;
 import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
@@ -49,9 +45,13 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
     private int count;
 
     List<TableDefinitions.Expense> expenses;// = getHelper().getExpenseDao().queryForAll();
+    List<TableDefinitions.Income> incomes;
 
-    ExpenseListAdapter adapter;
-    RecyclerView rv;
+    ExpenseListAdapter expense_adapter;
+    RecyclerView expense_rv;
+
+    IncomeListAdapter income_adapter;
+    RecyclerView income_rv;
 
     private OnFragmentInteractionListener mListener;
     public DataInputFragment() {
@@ -106,8 +106,12 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         super.onActivityCreated(savedInstanceState);
         try {
             expenses = getHelper().getExpenseDao().queryForAll();
-            adapter= new ExpenseListAdapter(expenses);
-            rv = getActivity().findViewById(R.id.recyclerView2);
+            expense_adapter = new ExpenseListAdapter(expenses);
+            expense_rv = getActivity().findViewById(R.id.expense_recycler_view);
+            incomes = getHelper().getIncomeDao().queryForAll();
+            income_adapter = new IncomeListAdapter(incomes);
+            income_rv=getActivity().findViewById(R.id.income_recycler_view);
+            System.out.println(income_rv.toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,7 +122,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         super.onStart();
 
         final Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
-
+        final Button add_income_button = getActivity().findViewById(R.id.add_income_button);
             //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
             //getHelper().getExpenseDao().delete(deletebuilder.prepare());
             /*for (int i = 0;i<40;i++){
@@ -132,35 +136,53 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
 
 
 
-            rv.setAdapter(adapter);
-            rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        expense_rv.setAdapter(expense_adapter);
+        expense_rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
-            add_expense_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        income_rv.setAdapter(income_adapter);
+        income_rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    DialogFragment aedf = AddExpenseDialogFragment.newInstance("Add an expense");
-                    Fragment previous = getFragmentManager().findFragmentByTag("expense_dialog");
 
-                    if (previous !=null){
-                        ft.remove(previous);
-                    }
-                    ft.addToBackStack(null);
+        add_expense_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                    aedf.show(ft,"expense_dialog");
-                    /*TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
-                    expenses.add(e);
-                    adapter.notifyItemInserted(expenses.size()-1);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                DialogFragment aedf = AddExpenseDialogFragment.newInstance("Add an expense");
+                Fragment previous = getFragmentManager().findFragmentByTag("expense_dialog");
 
-                    try {
-                        getHelper().getExpenseDao().create(e);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }*/
+                if (previous !=null){
+                    ft.remove(previous);
                 }
-            });
+                ft.addToBackStack(null);
+
+                aedf.show(ft,"expense_dialog");
+                /*TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
+                expenses.add(e);
+                expense_adapter.notifyItemInserted(expenses.size()-1);
+
+                try {
+                    getHelper().getExpenseDao().create(e);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }*/
+            }
+        });
+
+        add_income_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TableDefinitions.Income i = new TableDefinitions.Income("Test", 20);
+                incomes.add(i);
+                income_adapter.notifyItemInserted(incomes.size()-1);
+                try {
+                    getHelper().getIncomeDao().create(i);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 
     }
 
@@ -209,7 +231,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        adapter.notifyItemInserted(expenses.size()-1);
+        expense_adapter.notifyItemInserted(expenses.size()-1);
     }
 
     /**

@@ -37,7 +37,7 @@
     <!--android:layout_weight=".1"-->
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/expense_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -47,16 +47,31 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Income"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-       <!-- android:layout_weight=".1"-->
+    <!-- android:layout_weight=".1"-->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <Button
+            android:id="@+id/add_income_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Income"
+            android:theme="@style/PrimaryFlatButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/income_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".4" />
