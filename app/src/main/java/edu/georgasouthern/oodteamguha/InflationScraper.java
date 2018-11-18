@@ -1,5 +1,6 @@
 package edu.georgasouthern.oodteamguha;
 
+import android.content.Context;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -38,15 +39,14 @@ public class InflationScraper implements Scraper {
         this.graphview = graphview;
     }
 
-    public void getAdjustedBalanceGraph(double initialAmt, int startDate, int endDate){
-        int timeInterval = endDate - startDate;
+    public InflationScraper(TextView result, Context context){
+        this(null,result,new StringBuilder(),"https://www.inflationtool.com/indian-rupee",
+                ".table.table-bordered.table-hover tr","tr:matches(\\d+)","td:matches(\\d+)");
+    }
 
-        System.out.println("End Date "+endDate);
-        System.out.println("StartDate" + startDate);
-
-        System.out.println("Time Interval: "+timeInterval);
+    public void scrapeData(){
         try {
-            Document doc = Jsoup.connect(this.getWebsite()).get();
+            Document doc = Jsoup.connect(this.getWebsite()).ignoreContentType(true).get();
             Elements fulltable = doc.select(this.getCssClassIdentifier());
             Elements eachrow = fulltable.select(this.parseRow);
             Elements eachcolumn = eachrow.select(this.parseColumn);
@@ -76,7 +76,23 @@ public class InflationScraper implements Scraper {
 
         } catch (IOException e) {
             this.getBuilder().append("Error : ").append(e.getMessage()).append("\n");
+            e.printStackTrace();
         }
+    }
+
+
+    public void getAdjustedBalanceGraph(GraphView graphview, double initialAmt, int endDate){
+        int timeInterval = endDate - (entries.size()-1);
+
+        System.out.println("End Date "+endDate);
+        System.out.println("StartDate" + entries.get(entries.size()-1).getYear());
+
+        System.out.println("Time Interval: "+timeInterval);
+
+        //Scrapedata method
+    //    scrapeData();
+
+        //repaste here if it doesn't work
 
         //Get average inflation over specified time interval
         double endValue = entries.get(entries.size()-1).getValue();
@@ -156,7 +172,7 @@ public class InflationScraper implements Scraper {
                     return super.formatLabel((int) value, isValueX);
                 } else {
                     // show percentage for y vals
-                    return "$"+ super.formatLabel((int) value, isValueX);
+                    return "\u20B9"+ super.formatLabel((int) value, isValueX);
                 }
             }
         });
@@ -189,4 +205,6 @@ public class InflationScraper implements Scraper {
     public TextView getResult() {
         return this.result;
     }
+
+    public void setResultText(String resultText) { result.setText(resultText); }
 }

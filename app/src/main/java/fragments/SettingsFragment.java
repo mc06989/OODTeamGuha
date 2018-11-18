@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+
+import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.R;
 
 
@@ -91,6 +95,29 @@ public class SettingsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        final TextView tv = getActivity().findViewById(R.id.settings_text_view);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                final InflationScraper scraper = new InflationScraper(tv, getActivity().getApplicationContext());
+
+                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), 100,2020);
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        scraper.setResultText(scraper.getBuilder().toString());
+                    }
+                });
+            }
+        }).start();
     }
 
     /**

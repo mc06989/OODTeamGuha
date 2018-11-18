@@ -29,11 +29,11 @@ public class InflationResults extends Activity {
         int startDate = Integer.parseInt(inputs.getString("startDateEditText"));
         int endDate = Integer.parseInt(inputs.getString("endDateEditText"));
 
-        getAdjustedBalance(initialAmt,startDate,endDate);
+        getAdjustedBalance(graphview,initialAmt,startDate,endDate);
 
     }
 
-    private void getAdjustedBalance(final double initialAmt, final int startDate, final int endDate){
+    private void getAdjustedBalance(final GraphView graphview,  final double initialAmt, final int startDate, final int endDate){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +41,7 @@ public class InflationResults extends Activity {
                 InflationScraper scraper = new InflationScraper(graphview,result,builder,"https://www.inflationtool.com/indian-rupee",
                         ".table.table-bordered.table-hover tr","tr:matches(\\d+)","td:matches(\\d+)");
 
-                scraper.getAdjustedBalanceGraph(initialAmt,startDate,endDate);
+                scraper.getAdjustedBalanceGraph(graphview, initialAmt,startDate,endDate);
 
                 runOnUiThread(new Runnable() {
                     @Override
