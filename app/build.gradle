@@ -18,6 +18,13 @@ android {
     }
 }
 
+//added to debug
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
+
 dependencies {
 
     implementation 'com.j256.ormlite:ormlite-android:4.48'

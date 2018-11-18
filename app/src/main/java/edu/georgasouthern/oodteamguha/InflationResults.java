@@ -42,7 +42,7 @@ public class InflationResults extends Activity {
                 InflationScraper scraper = new InflationScraper(graphview,result,builder,"https://www.inflationtool.com/indian-rupee",
                         ".table.table-bordered.table-hover tr","tr:matches(\\d+)","td:matches(\\d+)");
 
-                scraper.getAdjustedBalanceGraph(graphview, initialAmt,startDate,endDate);
+                scraper.getAdjustedBalanceGraph(graphview, initialAmt,endDate);
 
                 runOnUiThread(new Runnable() {
                     @Override
