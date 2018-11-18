@@ -7,8 +7,14 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/settings_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/action_settings" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/settings_graph_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

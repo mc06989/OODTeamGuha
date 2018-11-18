@@ -1,9 +1,16 @@
 package activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+
+import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.R;
 
 public class Startup extends AppCompatActivity {
@@ -12,7 +19,27 @@ public class Startup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
-        System.out.print("Simulating startup");
+        final TextView tv = new TextView(getApplicationContext());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                final InflationScraper scraper = new InflationScraper(tv, getBaseContext());
+
+                scraper.scrapeData();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        scraper.setResultText(scraper.getBuilder().toString());
+                    }
+                });
+            }
+        }).start();
+        //GraphView graphview, TextView result, StringBuilder builder, String website, String cssClassIdentifier, String parseRow, String parseColumn
+
+        //ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},0);
 
         Intent intent = new Intent(getApplicationContext(), NavPane.class);
         startActivity(intent);
