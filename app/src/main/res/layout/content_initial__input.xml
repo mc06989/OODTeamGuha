@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="activities.Initial_Input"
-    tools:paddingStart="15sp"
-    tools:showIn="@layout/activity_initial__input">
+    tools:paddingStart="15sp">
 
     <!--HEAD-->
 
@@ -67,15 +66,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:gravity="end"
             android:minHeight="25dp"
             android:text="@string/food"
-            android:textAlignment="viewEnd"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="italic"
             tools:layout_marginStart="60sp"
             tools:layout_width="wrap_content"
-            tools:paddingStart="50sp" />
+            tools:paddingStart="15sp" />
 
         <EditText
             android:id="@+id/foodmonies"
@@ -86,6 +84,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -96,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
         android:orientation="horizontal"
+        android:paddingStart="20sp"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -107,10 +107,9 @@
             android:gravity="end"
             android:minHeight="25dp"
             android:text="@string/travel"
-            android:textAlignment="viewEnd"
             android:textSize="18sp"
             android:textStyle="italic"
-            tools:layout_marginStart="40sp"
+            tools:layout_marginStart="35sp"
             tools:layout_width="wrap_content" />
 
         <EditText
@@ -121,6 +120,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -132,6 +132,7 @@
         android:layout_marginTop="140dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
+        android:paddingStart="20sp"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -139,7 +140,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150sp"
+            android:layout_marginStart="110sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
@@ -147,8 +148,7 @@
             android:textAlignment="viewEnd"
             android:textSize="18sp"
             android:textStyle="italic"
-            tools:layout_width="wrap_content"
-            tools:paddingStart="20sp" />
+            tools:layout_width="wrap_content" />
 
         <EditText
             android:id="@+id/othermonies"
@@ -158,7 +158,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -203,16 +203,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140sp"
+            android:layout_marginStart="110sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
             android:text="@string/cable"
-            android:textAlignment="viewEnd"
             android:textSize="18sp"
             android:textStyle="italic"
-            tools:layout_width="wrap_content"
-            tools:paddingStart="20sp" />
+            tools:layout_width="wrap_content" />
 
         <EditText
             android:id="@+id/cablemonies"
@@ -222,7 +220,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -259,7 +257,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -277,7 +275,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140sp"
+            android:layout_marginStart="90sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
@@ -295,7 +293,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -329,7 +327,7 @@
         android:id="@+id/Efhegs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="330dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -363,7 +361,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100sp"
+            android:layout_marginStart="70sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
@@ -381,7 +379,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -400,7 +398,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="85sp"
+            android:layout_marginStart="60sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
@@ -418,7 +416,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
     </LinearLayout>
@@ -427,7 +425,7 @@
         android:id="@+id/linearLayout9"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="420dp"
         android:layout_marginBottom="509dp"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -437,7 +435,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140sp"
+            android:layout_marginStart="90sp"
             android:fontFamily="serif"
             android:gravity="end"
             android:minHeight="25dp"
@@ -455,7 +453,7 @@
             android:inputType="number"
             android:minWidth="25dp"
             android:minHeight="25dp"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:elevation="3sp" />
 
