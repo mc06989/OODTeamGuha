@@ -13,22 +13,23 @@ import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 
 public class IncomeListAdapter extends Adapter {
-    List<TableDefinitions.Income> listData;
-    public IncomeListAdapter(List<TableDefinitions.Income> data){
+    final List<TableDefinitions.Income> listData;
+
+    public IncomeListAdapter(List<TableDefinitions.Income> data) {
         this.listData = data;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.income_tag, parent, false);
-        IncomeListViewHolder elvh = new IncomeListViewHolder(itemView);
-        return elvh;
+        return new IncomeListViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TableDefinitions.Income income = listData.get(position);
-        ((IncomeListViewHolder)holder).setData(income);
+        ((IncomeListViewHolder) holder).setData(income);
     }
 
     @Override
@@ -36,7 +37,8 @@ public class IncomeListAdapter extends Adapter {
         return listData.size();
     }
 
-    public TableDefinitions.Income getItem(int position){
+    @SuppressWarnings("unused")
+    public TableDefinitions.Income getItem(int position) {
         return listData.get(position);
     }
 }

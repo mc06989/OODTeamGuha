@@ -15,13 +15,14 @@ import edu.georgasouthern.oodteamguha.R;
 
 public class AddExpenseDialogFragment extends DialogFragment {
 
-    private OnDialogCloseListener listener;
     View v;
-    public AddExpenseDialogFragment(){
+    private OnDialogCloseListener listener;
+
+    public AddExpenseDialogFragment() {
 
     }
 
-    public static AddExpenseDialogFragment newInstance(String title){
+    public static AddExpenseDialogFragment newInstance(String title) {
         AddExpenseDialogFragment newDialog = new AddExpenseDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
@@ -33,15 +34,15 @@ public class AddExpenseDialogFragment extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if(context instanceof OnDialogCloseListener){
+        if (context instanceof OnDialogCloseListener) {
             listener = (OnDialogCloseListener) context;
-        }else{
+        } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnDialogCloseListener");
         }
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.add_expense_dialog, container, false);
 
         Button ok = v.findViewById(R.id.expense_ok_button);
@@ -58,13 +59,10 @@ public class AddExpenseDialogFragment extends DialogFragment {
                 EditText name = v.findViewById(R.id.expense_name_edit);
                 EditText amount = v.findViewById(R.id.expense_amount_edit);
                 CheckBox monthly = v.findViewById(R.id.expense_monthly_edit);
-                try {
-                    TableDefinitions.Expense e = new TableDefinitions.Expense(Integer.valueOf(amount.getText().toString()), name.getText().toString(), monthly.isChecked());
-                    listener.OnDialogClose(e);
-                }
-                catch(NumberFormatException ne){
 
-                }
+                TableDefinitions.Expense e = new TableDefinitions.Expense(Integer.valueOf(amount.getText().toString()), name.getText().toString(), monthly.isChecked());
+                listener.OnDialogClose(e);
+
 
 
                 dismiss();
@@ -74,10 +72,10 @@ public class AddExpenseDialogFragment extends DialogFragment {
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view,savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
     }
 
-    public interface OnDialogCloseListener{
+    public interface OnDialogCloseListener {
         void OnDialogClose(TableDefinitions.Expense e);
     }
 }

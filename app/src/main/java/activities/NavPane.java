@@ -1,17 +1,16 @@
 package activities;
 
-import android.app.FragmentManager;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,35 +21,21 @@ import fragments.DataInputFragment;
 import fragments.InflationGraphFragment;
 import fragments.SettingsFragment;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.RelativeLayout;
-
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener{
+        implements NavigationView.OnNavigationItemSelectedListener, DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener {
 
     private DrawerLayout drawerLayout;
 
     private void configureToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
         //actionbar.setHomeAsUpIndicator(R.drawable.);
-        actionbar.setDisplayHomeAsUpEnabled(true);
+        //actionbar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void configureNavigationDrawer() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
     }
 
@@ -58,7 +43,7 @@ public class NavPane extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_pane);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         configureToolbar();
         configureNavigationDrawer();
@@ -69,11 +54,12 @@ public class NavPane extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Fragment fragment = new DataInputFragment();
-        getFragmentManager().beginTransaction().replace(R.id.background, fragment, "data_input").commit();
-
+        Fragment fragment = DataInputFragment.newInstance(0);
+        //getFragmentManager().beginTransaction().replace(R.id.background, fragment,fragment.getClass().getName()).addToBackStack(null).commit();
+        swapFragments(fragment);
+        updateDrawer(fragment);
 
     }
 
@@ -110,24 +96,59 @@ public class NavPane extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = new DataInputFragment();
-        if (id == R.id.action_settings) {
-            fragment = new SettingsFragment();
-        } else if(id == R.id.test_activities){
-            fragment = new InflationGraphFragment();
+        Fragment fragment = null;
+        switch (id) {
+            case R.id.action_settings:
+                fragment = SettingsFragment.newInstance("", "");
+                break;
+            case R.id.test_activities:
+                fragment = new InflationGraphFragment();
+                break;
+            case R.id.data_input:
+                fragment = new DataInputFragment();
+                break;
+            default:
+                break;
         }
 
+        if (fragment != null) {
+            swapFragments(fragment);
+            updateDrawer(fragment);
+        }
 
-        getFragmentManager().beginTransaction().replace(R.id.background, fragment).addToBackStack("").commit();
 
         //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void swapFragments(Fragment fragment) {
+        boolean doesPop = getFragmentManager().popBackStackImmediate(fragment.getClass().getName(), 0);
+        System.out.println("Fragment class: " + fragment.getClass().getName());
+        if (!(doesPop) && getFragmentManager().findFragmentByTag(fragment.getClass().getName()) == null) {
+            System.out.println("Adding nonexistent fragment " + getFragmentManager().getBackStackEntryCount());
+            getFragmentManager().beginTransaction().replace(R.id.background, fragment, fragment.getClass().getName()).addToBackStack(fragment.getClass().getName()).commit();
+        } else {
+            System.err.println("Found fragment");
+        }
+    }
+
+    public void updateDrawer(Fragment fragment) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            if (fragment instanceof DataInputFragment) {
+                actionBar.setTitle("Input your data");
+            } else if (fragment instanceof InflationGraphFragment) {
+                actionBar.setTitle("Inflation Graph");
+
+            } else {
+                actionBar.setTitle("Balance");
+            }
+        }
     }
 
     @Override

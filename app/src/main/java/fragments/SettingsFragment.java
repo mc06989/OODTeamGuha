@@ -23,6 +23,7 @@ import edu.georgasouthern.oodteamguha.R;
  * Use the {@link SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class SettingsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,7 +99,7 @@ public class SettingsFragment extends Fragment {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         final TextView tv = getActivity().findViewById(R.id.settings_text_view);
         new Thread(new Runnable() {
@@ -107,7 +108,7 @@ public class SettingsFragment extends Fragment {
 
                 final InflationScraper scraper = new InflationScraper(tv, getActivity().getApplicationContext());
 
-                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), 100,2020);
+                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), 100, 2020);
 
 
                 getActivity().runOnUiThread(new Runnable() {

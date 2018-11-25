@@ -1,5 +1,6 @@
 package activities;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -11,7 +12,8 @@ public class ExpenseListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public void setData(TableDefinitions.Expense item){
+    @SuppressLint("SetTextI18n")
+    public void setData(TableDefinitions.Expense item) {
         android.widget.TextView name = itemView.findViewById(R.id.expense_tag_name);
         name.setText(item.getName());
         android.widget.TextView amount = itemView.findViewById(R.id.expense_tag_value);

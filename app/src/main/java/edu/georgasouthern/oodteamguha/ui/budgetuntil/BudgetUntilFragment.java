@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import edu.georgasouthern.oodteamguha.R;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class BudgetUntilFragment extends Fragment {
 
     private BudgetUntilViewModel mViewModel;

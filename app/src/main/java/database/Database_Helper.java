@@ -19,7 +19,7 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
     private Dao<TableDefinitions.Income, Integer> incomeDao;
 
     public Database_Helper(Context context) {
-        super(context,DB_NAME, null, DB_VERSION);
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
@@ -44,7 +44,6 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         }
         onCreate(database, connectionSource);
     }
-
 
 
     public Dao<TableDefinitions.User, Integer> getUserDao() throws SQLException,

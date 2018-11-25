@@ -1,14 +1,9 @@
 package activities;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
-
-import com.jjoe64.graphview.GraphView;
 
 import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.R;
