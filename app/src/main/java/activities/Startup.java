@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import edu.georgasouthern.oodteamguha.FirstStartup;
 import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.R;
 
@@ -36,7 +37,7 @@ public class Startup extends AppCompatActivity {
 
         //ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},0);
 
-        Intent intent = new Intent(getApplicationContext(), NavPane.class);
+        Intent intent = new Intent(getApplicationContext(), FirstStartup.class);
         startActivity(intent);
         finish();
     }

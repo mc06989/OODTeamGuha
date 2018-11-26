@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/balance_launcher"
@@ -13,10 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
-
         <activity
             android:name="activities.Startup"
             android:theme="@style/AppTheme.Launcher">
@@ -30,11 +26,13 @@
             android:name="activities.Initial_Input"
             android:label="@string/title_activity_initial__input"
             android:theme="@style/AppTheme">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <meta-data
@@ -50,11 +48,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="activities.Initial_Input" />
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name="activities.DatabaseTest" />
         <activity
@@ -64,16 +63,19 @@
         <activity
             android:name=".CalculateInflation"
             android:label="">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".InflationResults"
-            android:label=""></activity>
-        <activity android:name=".BudgetUntil"></activity>
+            android:label="" />
+        <activity android:name=".BudgetUntil" />
+        <activity android:name=".FirstStartup"></activity>
     </application>
 
 </manifest>
