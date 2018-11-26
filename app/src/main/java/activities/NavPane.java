@@ -1,6 +1,6 @@
 package activities;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -127,11 +127,11 @@ public class NavPane extends AppCompatActivity
     }
 
     public void swapFragments(Fragment fragment) {
-        boolean doesPop = getFragmentManager().popBackStackImmediate(fragment.getClass().getName(), 0);
+        boolean doesPop = getSupportFragmentManager().popBackStackImmediate(fragment.getClass().getName(), 0);
         System.out.println("Fragment class: " + fragment.getClass().getName());
-        if (!(doesPop) && getFragmentManager().findFragmentByTag(fragment.getClass().getName()) == null) {
-            System.out.println("Adding nonexistent fragment " + getFragmentManager().getBackStackEntryCount());
-            getFragmentManager().beginTransaction().replace(R.id.background, fragment, fragment.getClass().getName()).addToBackStack(fragment.getClass().getName()).commit();
+        if (!(doesPop) && getSupportFragmentManager().findFragmentByTag(fragment.getClass().getName()) == null) {
+            System.out.println("Adding nonexistent fragment " + getSupportFragmentManager().getBackStackEntryCount());
+            getSupportFragmentManager().beginTransaction().replace(R.id.background, fragment, fragment.getClass().getName()).addToBackStack(fragment.getClass().getName()).commit();
         } else {
             System.err.println("Found fragment");
         }
@@ -158,7 +158,7 @@ public class NavPane extends AppCompatActivity
 
     @Override
     public void OnDialogClose(TableDefinitions.Expense e) {
-        DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag("data_input");
+        DataInputFragment fm = (DataInputFragment) getSupportFragmentManager().findFragmentByTag("data_input");
         fm.OnDialogClose(e);
     }
 }

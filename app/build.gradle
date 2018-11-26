@@ -19,7 +19,6 @@ android {
 }
 
 dependencies {
-
     implementation 'com.j256.ormlite:ormlite-android:4.48'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
