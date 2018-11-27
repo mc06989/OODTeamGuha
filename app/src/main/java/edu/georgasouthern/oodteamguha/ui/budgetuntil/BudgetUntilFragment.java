@@ -29,6 +29,7 @@ import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 import fragments.AddExpenseDialogFragment;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class BudgetUntilFragment extends Fragment {
 
     RecyclerView rv;

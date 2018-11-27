@@ -13,23 +13,22 @@ import edu.georgasouthern.oodteamguha.R;
 
 public class DataTestAdapter extends Adapter {
 
-    List<Expense> listData;
+    final List<Expense> listData;
 
-    public DataTestAdapter(List<Expense> data){
+    public DataTestAdapter(List<Expense> data) {
         this.listData = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.expense_tag, parent, false);
-        DataTestViewHolder datatestviewholder = new DataTestViewHolder(itemView);
-        return datatestviewholder;
+        return new DataTestViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Expense expense = listData.get(position);
-        ((DataTestViewHolder)holder).setData(expense);
+        ((DataTestViewHolder) holder).setData(expense);
     }
 
     @Override
@@ -37,7 +36,7 @@ public class DataTestAdapter extends Adapter {
         return listData.size();
     }
 
-    public Expense getItem(int position){
+    public Expense getItem(int position) {
         return listData.get(position);
     }
 }

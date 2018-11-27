@@ -1,21 +1,19 @@
 package database;
-import android.icu.util.DateInterval;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.types.DateTimeType;
 import com.j256.ormlite.table.DatabaseTable;
 
 public abstract class TableDefinitions {
 
 
     @DatabaseTable(tableName = "UserData")
-    public static class User{
+    public static class User {
         @DatabaseField(canBeNull = false, defaultValue = "User")
         public String name;
 
-        public void setName(String name) {
-            this.name = name;
+        public User() {
+
         }
 
         public String getName() {
@@ -23,27 +21,22 @@ public abstract class TableDefinitions {
             return name;
         }
 
-        public User(){
-
+        public void setName(String name) {
+            this.name = name;
         }
     }
 
 
-
     @DatabaseTable(tableName = "Expenses")
     public static class Expense {
-        public static final String VALUE = "value";
-        public static final String EXP_NAME = "expense_name";
-        public static final String MONTHLY = "if_monthly";
         @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = false, columnName = VALUE)
+        @DatabaseField(canBeNull = false)
         private double value;
-        @DatabaseField(canBeNull = false, columnName = EXP_NAME)
+        @DatabaseField()
         private String name;
-        @DatabaseField(canBeNull = false, columnName = MONTHLY)
+        @DatabaseField(canBeNull = false)
         private boolean monthly;
-
 
         public Expense() {
 
@@ -86,24 +79,22 @@ public abstract class TableDefinitions {
         public void setMonthly(boolean monthly) {
             this.monthly = monthly;
         }
-
-
     }
 
     @DatabaseTable(tableName = "AccountTypes")
-    public static class AccountType{
+    public static class AccountType {
 
         @DatabaseField(generatedId = true)
         private int id;
         @DatabaseField(canBeNull = false)
         private String name;
 
-        public AccountType(){
+        public AccountType() {
 
         }
 
-        public AccountType(String name){
-            this.name=name;
+        public AccountType(String name) {
+            this.name = name;
         }
 
         public int getId() {
@@ -125,7 +116,7 @@ public abstract class TableDefinitions {
 
 
     @DatabaseTable(tableName = "Accounts")
-    public static class Account{
+    public static class Account {
 
         @DatabaseField(generatedId = true)
         private int id;
@@ -136,7 +127,7 @@ public abstract class TableDefinitions {
         @DatabaseField(canBeNull = false)
         private AccountType accountType;
 
-        public Account(){
+        public Account() {
 
         }
 
@@ -174,13 +165,13 @@ public abstract class TableDefinitions {
     }
 
     @DatabaseTable(tableName = "SavingsAccounts")
-    public static class SavingsAccount{
+    public static class SavingsAccount {
         @DatabaseField(foreign = true)
         private Account account;
         @DatabaseField(canBeNull = false)
         private double interestRate;
 
-        public SavingsAccount(){
+        public SavingsAccount() {
 
         }
 
@@ -201,23 +192,26 @@ public abstract class TableDefinitions {
         }
     }
 
-    @DatabaseTable(tableName = "Incomes")
-    public static class Income{
-        public static final String VALUE = "value";
+    @DatabaseTable(tableName = "Income")
+    public static class Income {
         @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = false, columnName = VALUE)
+        @DatabaseField()
         private int amount;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField()
         private String name;
 
+        public Income() {
 
-        public Income(){
         }
 
-        public Income(String name, int amount){
-            this.name=name;
-            this.amount=amount;
+        public Income(String name, int amount) {
+            this.name = name;
+            this.amount = amount;
+        }
+
+        public String getName() {
+            return name;
         }
 
         public int getAmount() {

@@ -8,39 +8,40 @@ public class DataEntry {
     private double value;
     private double inflationrate;
 
-    public DataEntry(){ }
+    public DataEntry() {
+    }
 
-    public DataEntry(int year, double value, double inflationrate){
+    public DataEntry(int year, double value, double inflationrate) {
         this.year = year;
         this.value = value;
         this.inflationrate = inflationrate;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public double getValue() {
         return value;
     }
 
-    public void setInflationrate(double inflationrate) {
-        this.inflationrate = inflationrate;
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public double getInflationrate() {
         return inflationrate;
     }
 
-    public String toString(){
+    public void setInflationrate(double inflationrate) {
+        this.inflationrate = inflationrate;
+    }
+
+    public String toString() {
 
         return "Year: " + year + "  |  Value: \u20B9" + value + "  | Inflation: " + inflationrate + "%";
 

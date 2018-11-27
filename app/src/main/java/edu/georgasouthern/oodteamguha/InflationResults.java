@@ -10,7 +10,6 @@ public class InflationResults extends Activity {
     private TextView result;
     private GraphView graphview;
     private final StringBuilder builder = new StringBuilder();
-
     //trying to run inflationScraper as a service lol.
     public GraphView getGraphview() {
         return graphview;
