@@ -157,7 +157,8 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
                 }
             });
         try {
-            getHelper().addIncome();
+            getHelper().Incomesum();
+            getHelper().expensesum(true);
         } catch (SQLException e) {
             e.printStackTrace();
         }

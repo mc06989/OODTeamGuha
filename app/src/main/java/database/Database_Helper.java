@@ -74,18 +74,26 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         return expenseDao;
     }
 
-    public int addExpenses(boolean consider_income) throws java.sql.SQLException {
+    public void expensesum(boolean consider_income) throws java.sql.SQLException {
 
-// get our query builder from the DAO
-        QueryBuilder<TableDefinitions.Expense, Integer> queryBuilder =
-                expenseDao.queryBuilder();
-        queryBuilder.selectRaw("SUM(VALUE)");
-        Where <TableDefinitions.Expense, Integer> where = queryBuilder.where();
+        QueryBuilder<TableDefinitions.Expense, Integer> queryBuild =
+                getExpenseDao().queryBuilder();
+        Where <TableDefinitions.Expense, Integer> where = queryBuild.where();
         where.eq(MONTHLY, consider_income);
-        String results = expenseDao.queryRaw(queryBuilder.prepareStatementString()).toString();
 
-        int exp = Integer.parseInt(results);
-        return exp;
+        RawRowMapper<Integer> mapper = new RawRowMapper<Integer>() {
+            public Integer mapRow(String[] columnNames, String[] resultColumns) {
+                return Integer.parseInt(resultColumns[0]);
+            }
+        };
+        GenericRawResults<Integer> rawResults = getExpenseDao().queryRaw(
+                queryBuild.selectColumns("VALUE").prepareStatementString(), mapper);
+        List<Integer> list = rawResults.getResults();
+        int sum = 0;
+        for(int j = 0; j < list.size(); j++){
+            sum = sum + list.get(j);
+        }
+        Log.d("DATABASE_TESTING", Integer.toString(sum));
     }
 
 
@@ -105,21 +113,24 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         return incomeDao;
     }
 
-    public void addIncome() throws java.sql.SQLException {
+    public void Incomesum() throws java.sql.SQLException {
+
         QueryBuilder<TableDefinitions.Income, Integer> queryBuild =
                    getIncomeDao().queryBuilder();
 
         RawRowMapper<Integer> mapper = new RawRowMapper<Integer>() {
             public Integer mapRow(String[] columnNames, String[] resultColumns) {
-                // maybe you should verify that there _is_ only 1 column here
-                // maybe you should handle the possibility of a bad number and throw
                 return Integer.parseInt(resultColumns[0]);
             }
         };
         GenericRawResults<Integer> rawResults = getIncomeDao().queryRaw(
                         queryBuild.selectColumns("VALUE").prepareStatementString(), mapper);
         List<Integer> list = rawResults.getResults();
-        Log.d("DATABASE_TESTING", list.toString());
+        int sum = 0;
+        for(int j = 0; j < list.size(); j++){
+            sum = sum + list.get(j);
+        }
+        Log.d("DATABASE_TESTING", Integer.toString(sum));
 
 
 // get our query builder from the DAO
@@ -134,9 +145,6 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         //int inc = Integer.parseInt(results);
       //  return inc;
     }
-    public static void main(String [] args)
-    {
-       // addExpenses();
 
-    }
+
 }

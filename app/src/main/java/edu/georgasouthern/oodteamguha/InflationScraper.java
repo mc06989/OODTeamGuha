@@ -185,7 +185,7 @@ public class InflationScraper implements Scraper {
         return this.entries;
     }
 
-    public static List getEntriesStatic(){return entries; }
+    public static List<DataEntry> getEntriesStatic(){return entries; }
 
     @Override
     public StringBuilder getBuilder() {

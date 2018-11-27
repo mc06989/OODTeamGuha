@@ -13,6 +13,7 @@ import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.Input_Object;
 
 import static database.TableDefinitions.Expense.MONTHLY;
+import static java.security.AccessController.getContext;
 
 public class Algorithm {
 
@@ -125,9 +126,9 @@ public class Algorithm {
             return totalMonthly; }
 
 
-    public static double monthlyBalance (boolean considerannual){
-      double costs = totalMonthlyCosts(considerannual);
-      double income = getExpendable_income();
+    public double monthlyBalance (boolean considerannual){
+      double costs = Database_Helper.getHelper(getContext()).expensesum(considerannual);
+      double income = Database_Helper.getHelper(getContext()).Incomesum();
       double balance;
       balance = income - costs;
         if(balance < 0) { System.out.println("You are " + balance + " rupees out of budget!");}

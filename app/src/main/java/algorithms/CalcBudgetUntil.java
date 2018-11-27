@@ -4,8 +4,12 @@ import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import database.Database_Helper;
 import edu.georgasouthern.oodteamguha.DataEntry;
 import edu.georgasouthern.oodteamguha.InflationScraper;
+
+import static java.security.AccessController.getContext;
 
 public class CalcBudgetUntil extends Algorithm {
 
@@ -31,10 +35,10 @@ public class CalcBudgetUntil extends Algorithm {
     }
 
     //assuming that expendable income remains the same
-    public static void LastUntil(int currentyear){
+   public static void LastUntil(int currentyear){
        ArrayList<String> lasting  = new ArrayList<String>();
         int year = currentyear;
-        double monthlyBal = monthlyBalance(true);
+        double monthlyBal = Database_Helper.getHelper(getContext()).expensesum(true);
         //considering essential-yearly costs too
         if (monthlyBal < 0) System.out.println("Your budget will not last you this month!");
         else {
@@ -42,7 +46,7 @@ public class CalcBudgetUntil extends Algorithm {
             System.out.println("Your budget will last in " + year);
 
             for(int r = year + 1; r < year + 80; r++){
-            double costs =  totalMonthlyCosts(true)*(rateFromYear(r)/100 + 1);
+            double costs =  getHelper(getContext()).expensesum(true)*(rateFromYear(r)/100 + 1);
             double income = getExpendable_income()*(1 - rateFromYear(r));
             //Base case when budget does not last
             if((income - costs) < 0 ){ break; }
