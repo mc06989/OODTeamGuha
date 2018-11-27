@@ -127,11 +127,6 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
             }*/
 
 
-
-
-
-
-
             rv.setAdapter(adapter);
             rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
@@ -161,7 +156,11 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
                     }*/
                 }
             });
-
+        try {
+            getHelper().addIncome();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onResume(){

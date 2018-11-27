@@ -76,7 +76,7 @@ public class NavPane extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Fragment fragment = new DataInputFragment();
-        getFragmentManager().beginTransaction().replace(R.id.background, fragment, "data_input").tcommit();
+        getFragmentManager().beginTransaction().replace(R.id.background, fragment, "data_input").commit();
 
 
     }

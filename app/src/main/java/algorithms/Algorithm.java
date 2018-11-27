@@ -1,11 +1,18 @@
 package algorithms;
 
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import database.Database_Helper;
+import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.DataEntry;
 import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.Input_Object;
+
+import static database.TableDefinitions.Expense.MONTHLY;
 
 public class Algorithm {
 
@@ -19,6 +26,11 @@ public class Algorithm {
     //need to be removed and replaced from mainactivity
     static public double inflow, spending;
 
+    public double totalMonthlyCosts(){
+       // Database_Helper.getIncomeDao();
+        //TableDefinitions.Expense.class.Expense();
+        return 0.00;
+    }
 
     //INCOME
     public static void setPension_income(double pension_income) {
@@ -111,6 +123,7 @@ public class Algorithm {
         if (considerAnnual == true){ return(totalAnnual/12) + totalMonthly;}
         else
             return totalMonthly; }
+
 
     public static double monthlyBalance (boolean considerannual){
       double costs = totalMonthlyCosts(considerannual);

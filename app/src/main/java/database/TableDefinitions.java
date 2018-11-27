@@ -32,13 +32,16 @@ public abstract class TableDefinitions {
 
     @DatabaseTable(tableName = "Expenses")
     public static class Expense {
+        public static final String VALUE = "value";
+        public static final String EXP_NAME = "expense_name";
+        public static final String MONTHLY = "if_monthly";
         @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = VALUE)
         private double value;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = EXP_NAME)
         private String name;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = MONTHLY)
         private boolean monthly;
 
 
@@ -83,6 +86,8 @@ public abstract class TableDefinitions {
         public void setMonthly(boolean monthly) {
             this.monthly = monthly;
         }
+
+
     }
 
     @DatabaseTable(tableName = "AccountTypes")
@@ -198,12 +203,14 @@ public abstract class TableDefinitions {
 
     @DatabaseTable(tableName = "Incomes")
     public static class Income{
-        @DatabaseField(id=true,generatedId = true)
+        public static final String VALUE = "value";
+        @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = VALUE)
         private int amount;
         @DatabaseField(canBeNull = false)
         private String name;
+
 
         public Income(){
         }
