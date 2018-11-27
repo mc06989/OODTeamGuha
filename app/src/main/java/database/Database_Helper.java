@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
@@ -20,6 +21,15 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
 
     public Database_Helper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    private static Database_Helper database_helper = null;
+
+    public static Database_Helper getHelper(Context context) {
+        if (database_helper == null) {
+            database_helper = OpenHelperManager.getHelper(context, Database_Helper.class);
+        }
+        return database_helper;
     }
 
     @Override
