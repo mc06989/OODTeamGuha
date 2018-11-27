@@ -57,8 +57,8 @@ public class FirstStartup extends AppCompatActivity implements DataInputFragment
 //
 //        getSupportFragmentManager().beginTransaction().add(new WelcomeFragment(),DataInputFragment.class.getName()).addToBackStack(null).commit();
 
-
-
+        ViewPager vp = findViewById(R.id.pager);
+        vp.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.welcome,null));
     }
 
     @Override
