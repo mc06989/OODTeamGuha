@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
+import database.Database_Helper;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -48,7 +49,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
     // TODO: Rename and change types of parameters
     private int count;
     private OnFragmentInteractionListener mListener;
-    private Database_Helper database_helper = null;
+
 
     public DataInputFragment() {
         // Required empty public constructor
@@ -87,21 +88,16 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         return inflater.inflate(R.layout.fragment_data_input, container, false);
     }
 
-    private Database_Helper getHelper() {
-        if (database_helper == null) {
-            database_helper = OpenHelperManager.getHelper(this.getActivity().getApplicationContext(), Database_Helper.class);
-        }
-        return database_helper;
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try {
-            expenses = getHelper().getExpenseDao().queryForAll();
+
+            expenses = Database_Helper.getHelper(getContext()).getExpenseDao().queryForAll();
             expense_adapter = new ExpenseListAdapter(expenses);
             expense_rv = getActivity().findViewById(R.id.expense_recycler_view);
-            incomes = getHelper().getIncomeDao().queryForAll();
+            incomes = Database_Helper.getHelper(getContext()).getIncomeDao().queryForAll();
             income_adapter = new IncomeListAdapter(incomes);
             income_rv = getActivity().findViewById(R.id.income_recycler_view);
             System.out.println(income_rv.toString());
@@ -165,7 +161,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
                 incomes.add(i);
                 income_adapter.notifyItemInserted(incomes.size() - 1);
                 try {
-                    getHelper().getIncomeDao().create(i);
+                    Database_Helper.getHelper(getContext()).getIncomeDao().create(i);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -215,7 +211,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         Log.d("PRINTOUTS", "Adding expense");
         expenses.add(e);
         try {
-            getHelper().getExpenseDao().create(e);
+            Database_Helper.getHelper(getContext()).getExpenseDao().create(e);
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
