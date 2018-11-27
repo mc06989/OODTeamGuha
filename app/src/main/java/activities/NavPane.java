@@ -23,7 +23,7 @@ import fragments.SettingsFragment;
 
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DataInputFragment.OnFragmentInteractionListener,AddExpenseDialogFragment.OnDialogCloseListener {
 
     private DrawerLayout drawerLayout;
 
