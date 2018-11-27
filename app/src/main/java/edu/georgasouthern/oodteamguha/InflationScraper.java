@@ -18,18 +18,18 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class InflationScraper implements Scraper {
+    private static List<DataEntry> entries;
     private String website;
     private String cssClassIdentifier;
     private StringBuilder builder;
     private TextView result;
-
     private String parseRow;
     private String parseColumn;
-    private static List<DataEntry> entries;
     private GraphView graphview;
 
-    public InflationScraper(GraphView graphview, TextView result, StringBuilder builder, String website, String cssClassIdentifier, String parseRow, String parseColumn){
+    public InflationScraper(GraphView graphview, TextView result, StringBuilder builder, String website, String cssClassIdentifier, String parseRow, String parseColumn) {
         this.result = result;
         this.builder = builder;
         this.website = website;
@@ -39,12 +39,16 @@ public class InflationScraper implements Scraper {
         this.graphview = graphview;
     }
 
-    public InflationScraper(TextView result, Context context){
-        this(null,result,new StringBuilder(),"https://www.inflationtool.com/indian-rupee",
-                ".table.table-bordered.table-hover tr","tr:matches(\\d+)","td:matches(\\d+)");
+    public InflationScraper(TextView result, Context context) {
+        this(null, result, new StringBuilder(), "https://www.inflationtool.com/indian-rupee",
+                ".table.table-bordered.table-hover tr", "tr:matches(\\d+)", "td:matches(\\d+)");
     }
 
-    public void scrapeData(){
+    public static List getEntriesStatic() {
+        return entries;
+    }
+
+    public void scrapeData() {
         try {
             Document doc = Jsoup.connect(this.getWebsite()).ignoreContentType(true).get();
             Elements fulltable = doc.select(this.getCssClassIdentifier());
@@ -80,44 +84,43 @@ public class InflationScraper implements Scraper {
         }
     }
 
+    public void getAdjustedBalanceGraph(GraphView graphview, double initialAmt, int endDate) {
+        int timeInterval = endDate - entries.get(entries.size() - 1).getYear();
 
-    public void getAdjustedBalanceGraph(GraphView graphview, double initialAmt, int endDate){
-        int timeInterval = endDate - entries.get(entries.size()-1).getYear();
+        System.out.println("End Date " + endDate);
+        System.out.println("StartDate" + entries.get(entries.size() - 1).getYear());
 
-        System.out.println("End Date "+endDate);
-        System.out.println("StartDate" + entries.get(entries.size()-1).getYear());
-
-        System.out.println("Time Interval: "+timeInterval);
+        System.out.println("Time Interval: " + timeInterval);
 
         //Scrapedata method
-    //    scrapeData();
+        //    scrapeData();
 
         //repaste here if it doesn't work
 //        System.out.println(entries.size());
 //        System.out.println(entries.size()-1-timeInterval);
         //Get average inflation over specified time interval
-        double endValue = entries.get(entries.size()-1).getValue();
-        double startValue = entries.get(entries.size()-1-timeInterval).getValue();
+        double endValue = entries.get(entries.size() - 1).getValue();
+        double startValue = entries.get(entries.size() - 1 - timeInterval).getValue();
 
-        double rateOverTime = endValue/startValue;
+        double rateOverTime = endValue / startValue;
 
         System.out.println(rateOverTime);
 
-        double inflationModifier = 1.0/timeInterval;
+        double inflationModifier = 1.0 / timeInterval;
 
         System.out.println(inflationModifier);
 
-        double annualInflationRate = Math.pow(rateOverTime,inflationModifier)-1; //gives a decimal
+        double annualInflationRate = Math.pow(rateOverTime, inflationModifier) - 1; //gives a decimal
 
-        System.out.println("annual inflation: "+annualInflationRate);
+        System.out.println("annual inflation: " + annualInflationRate);
 
         //Create a list of projected balances
         List<DataInterval> graphPoints = new ArrayList<>();
-        graphPoints.add(new DataInterval(entries.get(entries.size()-1).getYear(),initialAmt));
+        graphPoints.add(new DataInterval(entries.get(entries.size() - 1).getYear(), initialAmt));
         double percentageModifier = 1.0 - annualInflationRate;
-        for(int i = 0; i < timeInterval; i++){
+        for (int i = 0; i < timeInterval; i++) {
             DataInterval point = new DataInterval();
-            point.setYear(entries.get(entries.size()-1).getYear()+i+1);
+            point.setYear(entries.get(entries.size() - 1).getYear() + i + 1);
             initialAmt = initialAmt * percentageModifier;
             point.setAdjustedBalance(initialAmt);
             graphPoints.add(point);
@@ -125,9 +128,9 @@ public class InflationScraper implements Scraper {
         System.out.println("Graph points size:" + graphPoints.size());
         NumberFormat balanceFormatter = new DecimalFormat("#0.00");
 
-        this.getBuilder().append("$"+balanceFormatter.format(graphPoints.get(graphPoints.size()-1).getAdjustedBalance())+"\n\n");
+        this.getBuilder().append("$" + balanceFormatter.format(graphPoints.get(graphPoints.size() - 1).getAdjustedBalance()) + "\n\n");
 
-        this.getBuilder().append("Annual Inflation Rate For Interval: \n").append(balanceFormatter.format(annualInflationRate)+"%\n\n");
+        this.getBuilder().append("Annual Inflation Rate For Interval: \n").append(balanceFormatter.format(annualInflationRate) + "%\n\n");
 
         //Populate a list of Data Points for the GraphSeries
         List<DataPoint> points = new ArrayList<>();
@@ -166,6 +169,7 @@ public class InflationScraper implements Scraper {
         nf.setGroupingUsed(false);
 
         graphview.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(nf, nf) {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public String formatLabel(double value, boolean isValueX) {
                 if (isValueX) {
@@ -173,7 +177,7 @@ public class InflationScraper implements Scraper {
                     return super.formatLabel((int) value, isValueX);
                 } else {
                     // show percentage for y vals
-                    return "\u20B9"+ super.formatLabel((int) value, isValueX);
+                    return "\u20B9" + super.formatLabel((int) value, isValueX);
                 }
             }
         });
@@ -182,10 +186,8 @@ public class InflationScraper implements Scraper {
 
     @Override
     public List getEntries() {
-        return this.entries;
+        return entries;
     }
-
-    public static List getEntriesStatic(){return entries; }
 
     @Override
     public StringBuilder getBuilder() {
@@ -207,5 +209,7 @@ public class InflationScraper implements Scraper {
         return this.result;
     }
 
-    public void setResultText(String resultText) { result.setText(resultText); }
+    public void setResultText(String resultText) {
+        result.setText(resultText);
+    }
 }

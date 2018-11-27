@@ -1,7 +1,7 @@
 package edu.georgasouthern.oodteamguha;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import edu.georgasouthern.oodteamguha.ui.budgetuntil.BudgetUntilFragment;
 

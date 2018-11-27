@@ -20,9 +20,10 @@ import edu.georgasouthern.oodteamguha.RecyclerItemClickListener;
 public class DatabaseTest extends AppCompatActivity {
 
     private Database_Helper database_helper = null;
+
     private Database_Helper getHelper() {
         if (database_helper == null) {
-            database_helper = OpenHelperManager.getHelper(this,Database_Helper.class);
+            database_helper = OpenHelperManager.getHelper(this, Database_Helper.class);
         }
         return database_helper;
     }
@@ -33,7 +34,6 @@ public class DatabaseTest extends AppCompatActivity {
         setContentView(R.layout.activity_database_test);
 
 
-
         try {
 
             //getHelper().getExpenseDao().create(new TableDefinitions.Expense(20, "Test", false));
@@ -41,23 +41,22 @@ public class DatabaseTest extends AppCompatActivity {
             final List<TableDefinitions.Expense> expenses = getHelper().getExpenseDao().queryForAll();
             final DataTestAdapter adapter = new DataTestAdapter(expenses);
 
-            final RecyclerView rv = ((RecyclerView)findViewById(R.id.recyclerView));
+            final RecyclerView rv = findViewById(R.id.recyclerView);
             rv.setAdapter(adapter);
             rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             Button addButton = findViewById(R.id.addExpenseButton);
 
 
-
             rv.addOnItemTouchListener(new RecyclerItemClickListener(
                     getApplicationContext(),
                     rv,
-                    new RecyclerItemClickListener.ClickListener(){
+                    new RecyclerItemClickListener.ClickListener() {
 
                         @Override
                         public void onItemClick(View view, int position) {
                             try {
 
-                                TableDefinitions.Expense e = ((DataTestAdapter)rv.getAdapter()).getItem(position);
+                                TableDefinitions.Expense e = ((DataTestAdapter) rv.getAdapter()).getItem(position);
                                 expenses.remove(e);
                                 getHelper().getExpenseDao().delete(e);
                                 rv.getAdapter().notifyDataSetChanged();

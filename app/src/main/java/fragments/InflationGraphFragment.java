@@ -1,8 +1,8 @@
 package fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +33,6 @@ public class InflationGraphFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InflationGraphFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static InflationGraphFragment newInstance(/*String param1, String param2*/) {
         InflationGraphFragment fragment = new InflationGraphFragment();
@@ -66,7 +58,7 @@ public class InflationGraphFragment extends Fragment {
         return inflater.inflate(R.layout.graph_view, container, false);
     }
 
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
 
@@ -77,7 +69,7 @@ public class InflationGraphFragment extends Fragment {
 
                 final InflationScraper scraper = new InflationScraper(tv, getActivity().getApplicationContext());
                 scraper.scrapeData();
-                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.getGraphView), 100,2050);
+                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.getGraphView), 100, 2050);
 
 
                 getActivity().runOnUiThread(new Runnable() {

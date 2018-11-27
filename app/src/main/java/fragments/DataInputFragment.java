@@ -1,12 +1,12 @@
 package fragments;
 
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
@@ -36,24 +35,21 @@ import edu.georgasouthern.oodteamguha.R;
  * Use the {@link DataInputFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DataInputFragment extends Fragment implements AddExpenseDialogFragment.OnDialogCloseListener{
+public class DataInputFragment extends Fragment implements AddExpenseDialogFragment.OnDialogCloseListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "count";
-
-    // TODO: Rename and change types of parameters
-    private int count;
-
     List<TableDefinitions.Expense> expenses;// = getHelper().getExpenseDao().queryForAll();
     List<TableDefinitions.Income> incomes;
-
     ExpenseListAdapter expense_adapter;
     RecyclerView expense_rv;
-
     IncomeListAdapter income_adapter;
     RecyclerView income_rv;
-
+    // TODO: Rename and change types of parameters
+    private int count;
     private OnFragmentInteractionListener mListener;
+    private Database_Helper database_helper = null;
+
     public DataInputFragment() {
         // Required empty public constructor
     }
@@ -78,7 +74,6 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        System.out.println("I'm in onCreate");
         if (getArguments() != null) {
             count = getArguments().getInt(ARG_PARAM1);
         }
@@ -89,14 +84,12 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_data_input, container, false);
-        return v;
+        return inflater.inflate(R.layout.fragment_data_input, container, false);
     }
 
-    private Database_Helper database_helper = null;
     private Database_Helper getHelper() {
         if (database_helper == null) {
-            database_helper = OpenHelperManager.getHelper(this.getActivity().getApplicationContext(),Database_Helper.class);
+            database_helper = OpenHelperManager.getHelper(this.getActivity().getApplicationContext(), Database_Helper.class);
         }
         return database_helper;
     }
@@ -110,7 +103,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
             expense_rv = getActivity().findViewById(R.id.expense_recycler_view);
             incomes = getHelper().getIncomeDao().queryForAll();
             income_adapter = new IncomeListAdapter(incomes);
-            income_rv=getActivity().findViewById(R.id.income_recycler_view);
+            income_rv = getActivity().findViewById(R.id.income_recycler_view);
             System.out.println(income_rv.toString());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,22 +111,17 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
 
     }
 
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
         final Button add_expense_button = getActivity().findViewById(R.id.add_expense_button);
         final Button add_income_button = getActivity().findViewById(R.id.add_income_button);
-            //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
-            //getHelper().getExpenseDao().delete(deletebuilder.prepare());
+        //DeleteBuilder<TableDefinitions.Expense, Integer> deletebuilder = getHelper().getExpenseDao().deleteBuilder();
+        //getHelper().getExpenseDao().delete(deletebuilder.prepare());
             /*for (int i = 0;i<40;i++){
                 TableDefinitions.Expense e = new TableDefinitions.Expense(10, "Test", false);
                 getHelper().getExpenseDao().create(e);
             }*/
-
-
-
-
-
 
 
         expense_rv.setAdapter(expense_adapter);
@@ -149,15 +137,15 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
 
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                DialogFragment aedf = AddExpenseDialogFragment.newInstance("Add an expense");
+                DialogFragment add_expense_dialog_fragment = AddExpenseDialogFragment.newInstance("Add an expense");
                 Fragment previous = getFragmentManager().findFragmentByTag("expense_dialog");
 
-                if (previous !=null){
+                if (previous != null) {
                     ft.remove(previous);
                 }
                 ft.addToBackStack(null);
 
-                aedf.show(ft,"expense_dialog");
+                add_expense_dialog_fragment.show(ft, "expense_dialog");
                 /*TableDefinitions.Expense e = new TableDefinitions.Expense(20, "added", false);
                 expenses.add(e);
                 expense_adapter.notifyItemInserted(expenses.size()-1);
@@ -175,7 +163,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
             public void onClick(View view) {
                 TableDefinitions.Income i = new TableDefinitions.Income("Test", 20);
                 incomes.add(i);
-                income_adapter.notifyItemInserted(incomes.size()-1);
+                income_adapter.notifyItemInserted(incomes.size() - 1);
                 try {
                     getHelper().getIncomeDao().create(i);
                 } catch (SQLException e1) {
@@ -186,7 +174,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
 
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 
     }
@@ -216,10 +204,10 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
     }
 
     @Override
-    public void onSaveInstanceState(Bundle out){
+    public void onSaveInstanceState(Bundle out) {
         super.onSaveInstanceState(out);
         out.putInt(ARG_PARAM1, count);
-        getFragmentManager().putFragment(out,"DataInputFragment",this);
+        getFragmentManager().putFragment(out, "DataInputFragment", this);
     }
 
     @Override
@@ -231,7 +219,7 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        expense_adapter.notifyItemInserted(expenses.size()-1);
+        expense_adapter.notifyItemInserted(expenses.size() - 1);
     }
 
     /**

@@ -1,4 +1,5 @@
 package edu.georgasouthern.oodteamguha;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -8,8 +9,8 @@ import android.view.View;
 /**
  * Created by Ashish on 25-Jul-16.
  */
- 
- /*     How to Use it
+
+/*     How to Use it
  *
  * mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mRecyclerView, new RecyclerItemClickListener.ClickListener() {
  *          @Override
@@ -24,14 +25,8 @@ import android.view.View;
  *
  */
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+    private GestureDetector mGestureDetector;
     private ClickListener mListener;
-
-    public static interface ClickListener {
-        public void onItemClick(View view, int position);
-        public void onLongItemClick(View view, int position);
-    }
-
-    GestureDetector mGestureDetector;
 
     public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, ClickListener listener) {
         mListener = listener;
@@ -51,7 +46,8 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
         });
     }
 
-    @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
         View childView = view.findChildViewUnder(e.getX(), e.getY());
         if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
             mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
@@ -60,8 +56,17 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
         return false;
     }
 
-    @Override public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) { }
+    @Override
+    public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+    }
 
     @Override
-    public void onRequestDisallowInterceptTouchEvent (boolean disallowIntercept){}
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+    }
+
+    public interface ClickListener {
+        void onItemClick(View view, int position);
+
+        void onLongItemClick(View view, int position);
+    }
 }
