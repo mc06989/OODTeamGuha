@@ -39,6 +39,10 @@ public class InflationScraper implements Scraper {
         this.graphview = graphview;
     }
 
+    public InflationScraper(){
+        this(null,null);
+    }
+
     public InflationScraper(TextView result, Context context) {
         this(null, result, new StringBuilder(), "https://www.inflationtool.com/indian-rupee",
                 ".table.table-bordered.table-hover tr", "tr:matches(\\d+)", "td:matches(\\d+)");
@@ -128,9 +132,9 @@ public class InflationScraper implements Scraper {
         System.out.println("Graph points size:" + graphPoints.size());
         NumberFormat balanceFormatter = new DecimalFormat("#0.00");
 
-        this.getBuilder().append("$" + balanceFormatter.format(graphPoints.get(graphPoints.size() - 1).getAdjustedBalance()) + "\n\n");
+        //this.getBuilder().append("$" + balanceFormatter.format(graphPoints.get(graphPoints.size() - 1).getAdjustedBalance()) + "\n\n");
 
-        this.getBuilder().append("Annual Inflation Rate For Interval: \n").append(balanceFormatter.format(annualInflationRate) + "%\n\n");
+       // this.getBuilder().append("Annual Inflation Rate For Interval: \n").append(balanceFormatter.format(annualInflationRate) + "%\n\n");
 
         //Populate a list of Data Points for the GraphSeries
         List<DataPoint> points = new ArrayList<>();
@@ -152,7 +156,6 @@ public class InflationScraper implements Scraper {
         //Create a format a linegraph series
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(arraypoints);
         graphview.addSeries(series);
-        graphview.setTitle("Inflation Rates 1960-Present");
         graphview.setTitleTextSize(50);
         graphview.getGridLabelRenderer().setPadding(50);
         graphview.getViewport().setXAxisBoundsManual(true);

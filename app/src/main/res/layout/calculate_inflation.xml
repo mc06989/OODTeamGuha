@@ -28,21 +28,6 @@
             android:textSize="30dip"/>
 
         <TextView
-            android:id="@+id/startDateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Current Year:"
-            android:textSize="40dip"/>
-
-        <EditText
-            android:id="@+id/startDateEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:textSize="30dip"/>
-
-        <TextView
             android:id="@+id/endDateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,8 +48,7 @@
         android:id="@+id/getBtn"
         android:layout_width="229dp"
         android:layout_height="147dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
+        android:layout_centerInParent="true"
         android:text="Get Data" />
 
 </RelativeLayout>

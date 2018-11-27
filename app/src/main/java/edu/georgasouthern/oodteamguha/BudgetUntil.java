@@ -12,9 +12,9 @@ public class BudgetUntil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.budget_until_activity);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                     .replace(R.id.container, BudgetUntilFragment.newInstance())
-                    .commitNow();
+                    .commit();
         }
     }
 }

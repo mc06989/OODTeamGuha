@@ -3,12 +3,21 @@ package database;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.GenericRawResults;
+import com.j256.ormlite.dao.RawRowMapper;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+
+import java.util.List;
+
+import static database.TableDefinitions.Expense.MONTHLY;
 
 public class Database_Helper extends OrmLiteSqliteOpenHelper {
 
@@ -87,5 +96,27 @@ public class Database_Helper extends OrmLiteSqliteOpenHelper {
         }
         return incomeDao;
     }
+
+    public int expensesum() throws java.sql.SQLException {
+        List<TableDefinitions.Expense> expenselist = getExpenseDao().queryForAll();
+        int sum = 0;
+        for (TableDefinitions.Expense i : expenselist)
+            sum+=i.getValue();
+
+        Log.d("DATABASE_TESTING", Integer.toString(sum));
+        return sum;
+    }
+
+    public int Incomesum() throws java.sql.SQLException {
+        List<TableDefinitions.Income> incomeList = getIncomeDao().queryForAll();
+        int sum = 0;
+        for (TableDefinitions.Income e : incomeList)
+            sum+=e.getAmount();
+
+        Log.d("DATABASE_TESTING", Integer.toString(sum));
+        return sum;
+    }
+
+
 
 }

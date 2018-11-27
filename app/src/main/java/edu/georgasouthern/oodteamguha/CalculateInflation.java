@@ -23,13 +23,13 @@ public class CalculateInflation extends Activity {
             public void onClick(View view) {
                 //Get Text Fields
                 EditText initialAmtEditText = findViewById(R.id.initialAmountEditText);
-                EditText startDateEditText = findViewById(R.id.startDateEditText);
+                //EditText startDateEditText = findViewById(R.id.startDateEditText);
                 EditText endDateEditText = findViewById(R.id.endDateEditText);
 
                 //Start your second activity
                 Intent intent = new Intent(CalculateInflation.this, InflationResults.class);
                 intent.putExtra("initialAmtEditText", initialAmtEditText.getText().toString());
-                intent.putExtra("startDateEditText", startDateEditText.getText().toString());
+                //intent.putExtra("startDateEditText", startDateEditText.getText().toString());
                 intent.putExtra("endDateEditText", endDateEditText.getText().toString());
                 startActivity(intent);
             }

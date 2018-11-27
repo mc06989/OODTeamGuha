@@ -36,6 +36,9 @@ public class SettingsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private int endDate;
+    private int initial;
+
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -56,6 +59,14 @@ public class SettingsFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public void setEndDate(int endDate){
+        this.endDate=endDate;
+    }
+
+    public void setInitial(int initial){
+        this.initial=initial;
     }
 
     @Override
@@ -101,14 +112,15 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        final TextView tv = getActivity().findViewById(R.id.settings_text_view);
+
+        final TextView tv = new TextView(getContext());//getActivity().findViewById(R.id.settings_text_view);
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 final InflationScraper scraper = new InflationScraper(tv, getActivity().getApplicationContext());
 
-                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), 100, 2020);
+                scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), initial, endDate);
 
 
                 getActivity().runOnUiThread(new Runnable() {
@@ -119,7 +131,13 @@ public class SettingsFragment extends Fragment {
                 });
             }
         }).start();
+
+
+
     }
+
+
+
 
     /**
      * This interface must be implemented by activities that contain this

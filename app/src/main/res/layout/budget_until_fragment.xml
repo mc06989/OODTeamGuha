@@ -33,10 +33,9 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="297dp"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_marginTop="298dp"
         android:text="SHMONEY"
         android:textSize="24sp" />
 
@@ -44,10 +43,19 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="346dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="CALCULATE" />
+
+    <TextView
+        android:id="@+id/lastuntil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="209dp"
+        android:layout_marginStart="40dp"
+        android:text="ghf" />
+
 
 </RelativeLayout>

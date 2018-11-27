@@ -16,7 +16,9 @@ import android.view.MenuItem;
 
 import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
+import edu.georgasouthern.oodteamguha.ui.budgetuntil.BudgetUntilFragment;
 import fragments.AddExpenseDialogFragment;
+import fragments.CalculateInflationFragment;
 import fragments.DataInputFragment;
 import fragments.InflationGraphFragment;
 import fragments.SettingsFragment;
@@ -103,12 +105,12 @@ public class NavPane extends AppCompatActivity
         Fragment fragment = null;
         switch (id) {
             case R.id.action_settings:
-                fragment = SettingsFragment.newInstance("", "");
+                fragment = CalculateInflationFragment.newInstance();
                 break;
             case R.id.test_activities:
-                fragment = new InflationGraphFragment();
+                fragment = new BudgetUntilFragment();
                 break;
-            case R.id.data_input:
+            case R.id. data_input:
                 fragment = new DataInputFragment();
                 break;
             default:
@@ -158,7 +160,7 @@ public class NavPane extends AppCompatActivity
 
     @Override
     public void OnDialogClose(TableDefinitions.Expense e) {
-        DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag("data_input");
+        DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag(DataInputFragment.class.getName());
         fm.OnDialogClose(e);
     }
 }

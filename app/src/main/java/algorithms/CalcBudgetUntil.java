@@ -1,5 +1,7 @@
 package algorithms;
 
+import android.widget.TextView;
+
 import java.util.List;
 
 import edu.georgasouthern.oodteamguha.DataEntry;
@@ -19,12 +21,15 @@ public class CalcBudgetUntil extends Algorithm {
     //to get the inflation rate of a particular year
     public static double rateFromYear(int myyear) {
         double rate = 0;
+
         List<DataEntry> ent = InflationScraper.getEntriesStatic();
+
         for (int i = 0; i < ent.size(); i++) {
             if (ent.get(i).getYear() == myyear) {
                 rate = ent.get(i).getInflationrate();
             }
         }
+
         return rate;
     }
 

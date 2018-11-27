@@ -29,13 +29,16 @@ public abstract class TableDefinitions {
 
     @DatabaseTable(tableName = "Expenses")
     public static class Expense {
+        public static final String MONTHLY = "monthly";
+        public static final String VALUE = "value";
+
         @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = VALUE)
         private double value;
         @DatabaseField()
         private String name;
-        @DatabaseField(canBeNull = false)
+        @DatabaseField(canBeNull = false, columnName = MONTHLY)
         private boolean monthly;
 
         public Expense() {
@@ -194,9 +197,10 @@ public abstract class TableDefinitions {
 
     @DatabaseTable(tableName = "Income")
     public static class Income {
+        public static final String VALUE = "value";
         @DatabaseField(generatedId = true)
         private int id;
-        @DatabaseField()
+        @DatabaseField(canBeNull = false, columnName = VALUE)
         private int amount;
         @DatabaseField()
         private String name;
