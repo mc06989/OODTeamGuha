@@ -13,7 +13,6 @@ import edu.georgasouthern.oodteamguha.InflationScraper;
 import edu.georgasouthern.oodteamguha.Input_Object;
 
 import static database.TableDefinitions.Expense.MONTHLY;
-import static java.security.AccessController.getContext;
 
 public class Algorithm {
 

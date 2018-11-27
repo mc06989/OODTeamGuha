@@ -76,7 +76,7 @@ public class BudgetUntilFragment extends Fragment {
                // CalcBudgetUntil.LastUntil(2018);
                 TextView show = getActivity().findViewById(R.id.textView11);
                 double costs = getHelper(getContext()).expensesum(false);
-                double income = getHelper(getContext()).Incomesum();
+                double income = Database_Helper.getHelper(getContext()).Incomesum();
                 double balance;
                 balance = income - costs;
                 if(balance < 0) { show.append("You are " + balance + " rupees out of budget!");}
