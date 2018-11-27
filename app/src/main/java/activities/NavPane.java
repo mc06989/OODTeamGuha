@@ -18,6 +18,7 @@ import database.TableDefinitions;
 import edu.georgasouthern.oodteamguha.R;
 import edu.georgasouthern.oodteamguha.ui.budgetuntil.BudgetUntilFragment;
 import fragments.AddExpenseDialogFragment;
+import fragments.AddIncomeDialogFragment;
 import fragments.CalculateInflationFragment;
 import fragments.DataInputFragment;
 import fragments.InflationGraphFragment;
@@ -25,7 +26,7 @@ import fragments.SettingsFragment;
 
 
 public class NavPane extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DataInputFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AddExpenseDialogFragment.OnDialogCloseListener , AddIncomeDialogFragment.OnDialogCloseListener{
 
     private DrawerLayout drawerLayout;
 
@@ -162,5 +163,11 @@ public class NavPane extends AppCompatActivity
     public void OnDialogClose(TableDefinitions.Expense e) {
         DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag(DataInputFragment.class.getName());
         fm.OnDialogClose(e);
+    }
+
+    @Override
+    public void OnDialogClose(TableDefinitions.Income i) {
+        DataInputFragment fm = (DataInputFragment) getFragmentManager().findFragmentByTag(DataInputFragment.class.getName());
+        fm.OnDialogClose(i);
     }
 }

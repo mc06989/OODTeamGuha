@@ -8,24 +8,14 @@
     tools:context=".ui.budgetuntil.BudgetUntilFragment">
 
     <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BudgetUntilFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="167dp"
-        android:text="How long will my current budget last?"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="169dp"
+        android:text="BALANCE"
         android:textAlignment="center"
         android:textSize="30sp" />
 
@@ -33,29 +23,23 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView10"
-        android:layout_marginTop="298dp"
-        android:text="SHMONEY"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="245dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="111dp"
         android:text="CALCULATE" />
-
-    <TextView
-        android:id="@+id/lastuntil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="209dp"
-        android:layout_marginStart="40dp"
-        android:text="ghf" />
 
 
 </RelativeLayout>

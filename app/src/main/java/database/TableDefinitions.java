@@ -204,7 +204,8 @@ public abstract class TableDefinitions {
         private int amount;
         @DatabaseField()
         private String name;
-
+        @DatabaseField()
+        private boolean monthly;
         public Income() {
 
         }
@@ -212,6 +213,13 @@ public abstract class TableDefinitions {
         public Income(String name, int amount) {
             this.name = name;
             this.amount = amount;
+            this.monthly=false;
+        }
+
+        public Income (int amount, String name, boolean monthly){
+            this.name=name;
+            this.amount=amount;
+            this.monthly=monthly;
         }
 
         public String getName() {
@@ -224,6 +232,14 @@ public abstract class TableDefinitions {
 
         public void setAmount(int amount) {
             this.amount = amount;
+        }
+
+        public boolean isMonthly() {
+            return monthly;
+        }
+
+        public void setMonthly(boolean monthly) {
+            this.monthly = monthly;
         }
     }
 }

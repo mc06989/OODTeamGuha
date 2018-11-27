@@ -70,7 +70,7 @@ public class BudgetUntilFragment extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 // CalcBudgetUntil.LastUntil(2018);
                 TextView show = getActivity().findViewById(R.id.textView11);
-                TextView last = getActivity().findViewById(R.id.lastuntil);
+               // TextView last = getActivity().findViewById(R.id.lastuntil);
                 double costs = 0;
                 try {
                    costs = Database_Helper.getHelper(getContext()).expensesum();
@@ -87,15 +87,15 @@ public class BudgetUntilFragment extends Fragment {
                 balance = income - costs;
                 if(balance < 0) { show.append("You are " + balance + " rupees out of budget!");}
                 if (balance == 0){  show.append("Your budget is exactly 0. Make sure to account for all your expenses! ");}
-                if (balance > 0){  show.append("Your current monthly balance, with " + costs +
-                        " rupees being spent and " + income + " rupees being spent is " + balance); }
+                if (balance > 0){  show.append("Your current monthly balance, \n with " + costs +
+                        " rupees being spent and \n " + income + " rupees coming in is " + balance); }
 
 
-                //ArrayList<String> lasting  = new ArrayList<String>();
+                /*//ArrayList<String> lasting  = new ArrayList<String>();
                 int year = 2018;
                 double monthlyBal = balance;
                 //considering essential-yearly costs too
-                if (monthlyBal < 0) last.append("Your budget will not last you this month!");
+               if (monthlyBal < 0) last.append("Your budget will not last you this month!");
                 else {
                     last.append("Your budget will last in" + year);
                     System.out.println("Your budget will last in " + year);
@@ -113,7 +113,7 @@ public class BudgetUntilFragment extends Fragment {
                         }
                     }
                 }
-                //show.append("sdcdscdsc");
+                //show.append("sdcdscdsc");*/
             }
         });
     }

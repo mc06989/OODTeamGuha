@@ -113,13 +113,14 @@ public class SettingsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        final TextView tv = new TextView(getContext());//getActivity().findViewById(R.id.settings_text_view);
+        final TextView tv = getActivity().findViewById(R.id.result);
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 final InflationScraper scraper = new InflationScraper(tv, getActivity().getApplicationContext());
 
+                scraper.scrapeData();
                 scraper.getAdjustedBalanceGraph((GraphView) getActivity().findViewById(R.id.settings_graph_view), initial, endDate);
 
 

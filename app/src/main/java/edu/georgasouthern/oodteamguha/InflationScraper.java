@@ -39,9 +39,7 @@ public class InflationScraper implements Scraper {
         this.graphview = graphview;
     }
 
-    public InflationScraper(){
-        this(null,null);
-    }
+
 
     public InflationScraper(TextView result, Context context) {
         this(null, result, new StringBuilder(), "https://www.inflationtool.com/indian-rupee",
@@ -132,7 +130,7 @@ public class InflationScraper implements Scraper {
         System.out.println("Graph points size:" + graphPoints.size());
         NumberFormat balanceFormatter = new DecimalFormat("#0.00");
 
-        //this.getBuilder().append("$" + balanceFormatter.format(graphPoints.get(graphPoints.size() - 1).getAdjustedBalance()) + "\n\n");
+        this.getBuilder().append("$" + balanceFormatter.format(graphPoints.get(graphPoints.size() - 1).getAdjustedBalance()) + "\n\n");
 
        // this.getBuilder().append("Annual Inflation Rate For Interval: \n").append(balanceFormatter.format(annualInflationRate) + "%\n\n");
 

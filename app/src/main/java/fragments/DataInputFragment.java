@@ -36,7 +36,7 @@ import edu.georgasouthern.oodteamguha.R;
  * Use the {@link DataInputFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DataInputFragment extends Fragment implements AddExpenseDialogFragment.OnDialogCloseListener {
+public class DataInputFragment extends Fragment implements AddExpenseDialogFragment.OnDialogCloseListener, AddIncomeDialogFragment.OnDialogCloseListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "count";
@@ -157,14 +157,27 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         add_income_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TableDefinitions.Income i = new TableDefinitions.Income("Test", 20);
-                incomes.add(i);
-                income_adapter.notifyItemInserted(incomes.size() - 1);
-                try {
-                    Database_Helper.getHelper(getContext()).getIncomeDao().create(i);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                DialogFragment add_income_dialog_fragment = AddIncomeDialogFragment.newInstance("Add an income");
+                Fragment previous = getFragmentManager().findFragmentByTag("income_dialog");
+
+                if (previous != null) {
+                    ft.remove(previous);
                 }
+                ft.addToBackStack(null);
+
+                add_income_dialog_fragment.show(ft, "income_dialog");
+
+//                TableDefinitions.Income i = new TableDefinitions.Income("Test", 20);
+//                incomes.add(i);
+//                income_adapter.notifyItemInserted(incomes.size() - 1);
+//                try {
+//                    Database_Helper.getHelper(getContext()).getIncomeDao().create(i);
+//                } catch (SQLException e1) {
+//                    e1.printStackTrace();
+//                }
             }
         });
 
@@ -217,6 +230,19 @@ public class DataInputFragment extends Fragment implements AddExpenseDialogFragm
         }
         expense_adapter.notifyItemInserted(expenses.size() - 1);
     }
+
+    @Override
+    public void OnDialogClose(TableDefinitions.Income i) {
+        Log.d("PRINTOUTS", "Adding expense");
+        incomes.add(i);
+        try {
+            Database_Helper.getHelper(getContext()).getIncomeDao().create(i);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        income_adapter.notifyItemInserted(incomes.size() - 1);
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
